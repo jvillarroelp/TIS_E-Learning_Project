@@ -3,7 +3,7 @@ Proyecto grupal de Taller de Ingeniería de Software que consiste en la creació
 
 # Proyecto Plataforma E Learning
 
-La plataforma a desarrollar, se hará mediante el uso del lenguaje [PHP](https://www.php.net/), [HTML](https://html.com/), [CSS](https://lenguajecss.com/css/), entre otros. Además, para la gestión de la base de datos se usará a [phpMyAdmin](https://www.phpmyadmin.net/), y como gestor de la base de datos será [MySQL](https://www.mysql.com/).
+La plataforma a desarrollar, se hará mediante el uso del lenguaje [PHP](https://www.php.net/), [HTML](https://html.com/), [CSS](https://lenguajecss.com/css/), entre otros. Además, para la gestión de la base de datos se usará a [phpMyAdmin](https://www.phpmyadmin.net/), y como gestor de la base de datos será [MySQL](https://www.mysql.com/) que estará integrado en [Xampp](https://www.apachefriends.org/es/index.html).
 
 ## Tabla de Contenidos
 * [Plataforma](#proyecto-plataforma-e-learning)
@@ -26,5 +26,6 @@ El proyecto está: _en progreso_
  - CSS
  - Visual Studio Code
  - phpMyAdmin
- - FileZilla
+ - MySQL
+ - Xampp
 
