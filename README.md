@@ -43,6 +43,10 @@ Y terminamos con la instalación:
 
 Seleccionamos la opción de **"admin"** en MySQL y se nos redirigirá a `http://localhost/phpmyadmin/`
 
+Dentro de esta pagina seleccionamos **Base de Datos** e ingresamos un nombre para dicha BD, que en este caso fue **_elearning_DB_**. Todo lo demás lo mantenemos igual.
+
+![image](https://github.com/user-attachments/assets/00d74097-a10e-43d6-bcb6-f3398b3ee8b5)
+
 
 
 
