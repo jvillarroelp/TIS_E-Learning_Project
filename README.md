@@ -3,7 +3,9 @@ Proyecto grupal de Taller de Ingeniería de Software que consiste en la creació
 
 # Proyecto Plataforma E Learning
 
-La plataforma a desarrollar, se hará mediante el uso del lenguaje [PHP](https://www.php.net/), [HTML](https://html.com/), [CSS](https://lenguajecss.com/css/), entre otros. Además, para la gestión de la base de datos se usará a [phpMyAdmin](https://www.phpmyadmin.net/), y como gestor de la base de datos será [MySQL](https://www.mysql.com/) que estará integrado en [Xampp](https://www.apachefriends.org/es/index.html).
+La plataforma a desarrollar, se hará mediante el uso del lenguaje [PHP](https://www.php.net/), [HTML](https://html.com/), [CSS](https://lenguajecss.com/css/), entre otros. Además, para la gestión de la base de datos se usará a [phpMyAdmin](https://www.phpmyadmin.net/), y como gestor de la base de datos será [MySQL](https://www.mysql.com/) que estará integrado en [Xampp](https://www.apachefriends.org/es/index.html). 
+
+_PD: No es necesario instalar MySQL por separado, basta con solo instalar Xampp_
 
 ## Tabla de Contenidos
 * [Plataforma](#proyecto-plataforma-e-learning)
@@ -59,7 +61,7 @@ Dentro de esta pagina seleccionamos **Base de Datos** e ingresamos un nombre par
 
 ### Visual Studio Code
 
-- Dentro del IDE procuramos contar con nuestro archivo de conexión **config.php**, en el cual ingresaremos los parametros necesarios, que en este caso solo será modificar el **_DB_name_**, por el nombre correspondiente al de nuestra base de datos que está en **phpMyAdmin**:
+- Dentro del IDE procuramos contar con nuestro archivo de conexión **config.php**, en el cual ingresaremos los parametros necesarios, que en este caso solo será modificando el **_DB_name_**, por el nombre correspondiente al de nuestra base de datos que está en **phpMyAdmin**:
 
 ![image](https://github.com/user-attachments/assets/ea1804c7-0860-4783-b04b-8125eeaab9ca)
 
