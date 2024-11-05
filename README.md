@@ -57,13 +57,12 @@ Dentro de esta pagina seleccionamos **Base de Datos** e ingresamos un nombre par
 
 ![image](https://github.com/user-attachments/assets/31309223-3cb2-4d2c-8e36-293a4b22969c)
 
+### Visual Studio Code
 
+- Dentro del IDE procuramos contar con nuestro archivo de conexión **config.php**, en el cual ingresaremos los parametros necesarios, que en este caso solo será modificar el **_DB_name_**, por el nombre correspondiente al de nuestra base de datos que está en **phpMyAdmin**:
 
+![image](https://github.com/user-attachments/assets/ea1804c7-0860-4783-b04b-8125eeaab9ca)
 
-
- 
-
-En Proceso
   
 ## Estado del proyecto
 
