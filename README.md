@@ -37,6 +37,11 @@ Y terminamos con la instalación:
 
 ![image](https://github.com/user-attachments/assets/6f7516f2-0551-4bc8-b546-238ce23f8864)
 
+- Para empezar a trabajar con la base de datos en **phpMyAdmin** primero ejecutamos Xampp y le damos **Start** tanto a Apache como a MySQL:
+
+![image](https://github.com/user-attachments/assets/31768193-8c49-46be-ac07-da1f2ab1466c)
+
+Seleccionamos la opción de **"admin"** en MySQL y se nos redirigirá a `http://localhost/phpmyadmin/`
 
 
 
