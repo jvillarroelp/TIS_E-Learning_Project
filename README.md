@@ -13,7 +13,7 @@ La plataforma a desarrollar, se hará mediante el uso del lenguaje [PHP](https:/
 
 ## Instalacion
 
-- Primero comenzamos descargando el archivo **elearning.sql** que se encuentra dentro de la carpeta **_"Modelos_DB"_**. Si quieren pueden descargar los demás modelos generados en PowerDesigner, aunque no es necesario, basta con tener el scrip SQL.
+- Primero comenzamos descargando el archivo **elearning.sql** que se encuentra dentro de la carpeta **_"Modelos_DB"_**. Si quieren pueden descargar los demás modelos generados en PowerDesigner, aunque no es necesario, basta con tener el script SQL.
 
 - Segundo, procedemos a descargar Xampp usando el siguiente enlace [Xampp](https://www.apachefriends.org/es/download.html).
 
@@ -43,9 +43,14 @@ Y terminamos con la instalación:
 
 Seleccionamos la opción de **"admin"** en MySQL y se nos redirigirá a `http://localhost/phpmyadmin/`
 
-Dentro de esta pagina seleccionamos **Base de Datos** e ingresamos un nombre para dicha BD, que en este caso fue **_elearning_DB_**. Todo lo demás lo mantenemos igual.
+Dentro de esta pagina seleccionamos **Base de Datos** e ingresamos un nombre para dicha BD, que en este caso fue **_elearning_DB_**. Todo lo demás lo mantenemos igual y seleccionamos **Crear**
 
 ![image](https://github.com/user-attachments/assets/00d74097-a10e-43d6-bcb6-f3398b3ee8b5)
+
+- Para ejecutar el Script SQL basta con seleccionar el nombre de nuestra base de datos en el panel lateral izquierdo, nos dirigimos a **Importar** y seleccionamos el script **elearning.sql** que descargamos en un principio, para finalizar seleccionando el botón **Importar** que se encuentra al final de la pagina.
+
+![image](https://github.com/user-attachments/assets/31309223-3cb2-4d2c-8e36-293a4b22969c)
+
 
 
 
