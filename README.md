@@ -29,9 +29,14 @@ Aceptamos las opciones:
 
 ![image](https://github.com/user-attachments/assets/eb82254a-ef4d-4fad-a7ad-14c1d026c675)
 
-Procuramos tener estas dos opciones marcadas si o si:
+Procuramos tener estas dos opciones marcadas (phpMyAdmin & MySQL) si o si:
 
 ![image](https://github.com/user-attachments/assets/5875d2e1-7232-4c66-8bda-5bef2b79b1ed)
+
+Y terminamos con la instalación:
+
+![image](https://github.com/user-attachments/assets/6f7516f2-0551-4bc8-b546-238ce23f8864)
+
 
 
 
