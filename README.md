@@ -13,7 +13,13 @@ La plataforma a desarrollar, se hará mediante el uso del lenguaje [PHP](https:/
 
 ## Instalacion
 
-- Primero comenzamos descargando el archivo **elearning.sql** que se encuentra dentro de la carpeta **_"Modelos_DB"_**
+- Primero comenzamos descargando el archivo **elearning.sql** que se encuentra dentro de la carpeta **_"Modelos_DB"_**. Si quieren pueden descargar los demás modelos generados en PowerDesigner, aunque no es necesario, basta con tener el scrip SQL.
+
+- Segundo, procedemos a descargar Xampp usando el siguiente enlace [Xampp](https://www.apachefriends.org/es/download.html).
+  Seleccionamos la ultima versión existente:
+
+![image](https://github.com/user-attachments/assets/f7867649-c6b9-4b20-94dc-6ca03fd6a7c3)
+ 
 
 En Proceso
   
