@@ -13,7 +13,7 @@ La plataforma a desarrollar, se hará mediante el uso del lenguaje [PHP](https:/
 
 ## Instalacion
 
-- Primero comenzamos descargando el archivo **elearning.sql** que se encuentra dentro de la carpeta **__"Modelos_DB"__**
+- Primero comenzamos descargando el archivo **elearning.sql** que se encuentra dentro de la carpeta **_"Modelos_DB"_**
 
 En Proceso
   
