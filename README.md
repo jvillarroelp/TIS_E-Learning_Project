@@ -19,7 +19,8 @@ La plataforma a desarrollar, se hará mediante el uso del lenguaje [PHP](https:/
 
 Seleccionamos la ultima versión existente:
 
-![image](https://github.com/user-attachments/assets/f7867649-c6b9-4b20-94dc-6ca03fd6a7c3)
+![image](https://github.com/user-attachments/assets/c31d347c-3513-4230-9b3f-f0a217856484)
+
  
 
 En Proceso
