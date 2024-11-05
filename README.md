@@ -39,6 +39,8 @@ Y terminamos con la instalación:
 
 ![image](https://github.com/user-attachments/assets/6f7516f2-0551-4bc8-b546-238ce23f8864)
 
+### Ejecución de phpMyAdmin
+
 - Para empezar a trabajar con la base de datos en **phpMyAdmin** primero ejecutamos Xampp y le damos **Start** tanto a Apache como a MySQL:
 
 ![image](https://github.com/user-attachments/assets/31768193-8c49-46be-ac07-da1f2ab1466c)
@@ -48,6 +50,8 @@ Seleccionamos la opción de **"admin"** en MySQL y se nos redirigirá a `http://
 Dentro de esta pagina seleccionamos **Base de Datos** e ingresamos un nombre para dicha BD, que en este caso fue **_elearning_DB_**. Todo lo demás lo mantenemos igual y seleccionamos **Crear**
 
 ![image](https://github.com/user-attachments/assets/00d74097-a10e-43d6-bcb6-f3398b3ee8b5)
+
+### Creación de la Base de Datos
 
 - Para ejecutar el Script SQL basta con seleccionar el nombre de nuestra base de datos en el panel lateral izquierdo, nos dirigimos a **Importar** y seleccionamos el script **elearning.sql** que descargamos en un principio, para finalizar seleccionando el botón **Importar** que se encuentra al final de la pagina.
 
