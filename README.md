@@ -21,6 +21,16 @@ Seleccionamos la ultima versión existente:
 
 ![image](https://github.com/user-attachments/assets/c31d347c-3513-4230-9b3f-f0a217856484)
 
+Ejecutamos el instalador:
+
+![image](https://github.com/user-attachments/assets/2b335bb4-e9ee-42ac-a937-4671bfbebde9)
+
+Aceptamos las opciones:
+
+![image](https://github.com/user-attachments/assets/eb82254a-ef4d-4fad-a7ad-14c1d026c675)
+
+
+
  
 
 En Proceso
