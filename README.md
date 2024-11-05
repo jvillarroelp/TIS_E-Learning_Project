@@ -29,6 +29,11 @@ Aceptamos las opciones:
 
 ![image](https://github.com/user-attachments/assets/eb82254a-ef4d-4fad-a7ad-14c1d026c675)
 
+Procuramos tener estas dos opciones marcadas si o si:
+
+![image](https://github.com/user-attachments/assets/5875d2e1-7232-4c66-8bda-5bef2b79b1ed)
+
+
 
 
  
