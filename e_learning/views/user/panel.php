@@ -13,7 +13,7 @@
             <!-- Contenido en progreso -->
             <div class="ps-5">
                 <h4 class="mt-4">En progreso</h4>
-                <div class="buscador d-flex align-items-center mb-4">
+                <div class="buscador d-flex flex-wrap justify-content-between align-items-center mb-4">
                     <nav class="navbar navbar-light bg-light">
                         <div class="container-fluid">
                             <form class="d-flex">
@@ -22,54 +22,47 @@
                             </form>
                         </div>
                     </nav>
-                    <nav>
-                        <button class="btn btn-primary ms-3" type="submit">Button</button>
-                        <button class="btn btn-primary" type="submit">Button</button>
+                    <nav class="pe-4">
+                        <button class="btn btn-info ms-3" type="submit"><i class="uil uil-window-grid"></i></button>
+                        <button class="btn btn-info" type="submit"><i class="uil uil-list-ul"></i></button>
                     </nav>
                 </div>
 
-                <div class="row">
-                    <!-- Card 1 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="../../images/img4.jpg" class="card-img-top" alt="Card image">
+
+                <div class="row row-cols-1 row-cols-md-3 g-4 pe-4">
+                    <div class="col">
+                        <div class="card">
+                            <img src="../../images/img4.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Card title 1</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <div class="card-body">
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Card 2 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="../../images/img4.jpg" class="card-img-top" alt="Card image">
+                    <div class="col">
+                        <div class="card">
+                            <img src="../../images/img4.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Card title 2</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <div class="card-body">
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Card 3 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="../../images/img4.jpg" class="card-img-top" alt="Card image">
+                    <div class="col">
+                        <div class="card">
+                            <img src="../../images/img4.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Card title 3</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <img src="../../images/img4.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
                         </div>
                     </div>
@@ -79,7 +72,7 @@
 
         <!-- Logros (col-md-4) -->
         <div class="col-md-4" style="background-color: #f0f0f0; min-height: 100%; position: absolute; right: 0; top: 0;">
-            <section class="cuerpo p-4 pt-5">
+            <section class="cuerpo p-4 pt-5 ">
                 <h3>LOGROS</h3>
                 <div class="d-flex align-items-center">
                     <div class="flex-shrink-0">

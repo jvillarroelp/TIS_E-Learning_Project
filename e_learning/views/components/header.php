@@ -8,7 +8,7 @@
 
     <!-- ICONOS DE LA LIBRERÍA UNICONS -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link rel="stylesheet" href="estilo.css">
+    
     <!-- GOOGLE FONTS (MONTSERRAT) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
