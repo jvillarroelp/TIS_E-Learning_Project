@@ -17,7 +17,7 @@
                     <nav class="navbar navbar-light bg-light">
                         <div class="container-fluid">
                             <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                                <input class="form-control me-2 col-md-8" type="search" placeholder="Buscar" aria-label="Search">
                                 <button class="btn btn-outline-success" type="submit">Buscar</button>
                             </form>
                         </div>
@@ -72,14 +72,16 @@
 
         <!-- Logros (col-md-4) -->
         <div class="col-md-4" style="background-color: #f0f0f0; min-height: 100%; position: absolute; right: 0; top: 0;">
-            <section class="cuerpo p-4 pt-5 ">
-                <h3>LOGROS</h3>
-                <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                        <img src="../../images/img4.jpg" alt="..." width="60px" height="60px">
-                    </div>
-                    <div class="flex-grow-1 ms-3 pe-3">
-                        <p>This is some content from a media component.</p>
+            <section class="cuerpo p-4 pt-5">
+                <div class="cotenedor pt-5">
+                    <h3>LOGROS</h3>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <img src="../../images/img4.jpg" alt="..." width="60px" height="60px">
+                        </div>
+                        <div class="flex-grow-1 ms-3 pe-3">
+                            <p>This is some content from a media component.</p>
+                        </div>
                     </div>
                 </div>
             </section>

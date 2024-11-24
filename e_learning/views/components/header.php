@@ -8,7 +8,7 @@
 
     <!-- ICONOS DE LA LIBRERÍA UNICONS -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    
+    <link rel="stylesheet" href="estilo.css">
     <!-- GOOGLE FONTS (MONTSERRAT) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,7 @@
                         <a class="nav-link text-white" href="views/register_view.php">Registrarse</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-white" href="views/user/panel.php" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link  text-white" href="views/user/panel.php" tabindex="-1" aria-disabled="true">Tablero de aprendizaje</a>
                     </li>
                 </ul>
             </div>
