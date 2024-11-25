@@ -60,7 +60,7 @@
     ?>
 
     <form action="../modules/login.php" method="POST">
-        <label for="rut_usuario">RUT:</label>
+        <label for="rut_usuario¿">RUT:</label>
         <input type="number" name="rut_usuario" required>
 
         <label for="contrasenia">Contraseña:</label>

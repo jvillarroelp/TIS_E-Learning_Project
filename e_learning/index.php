@@ -172,7 +172,7 @@
             </div>
         </div>
     </div>
-    <div class="contenido pt-5" style="background-color: #f5f5f5">
+    <div class="contenido pt-5" style="background-color: #f5f5f5"><h3 class="ps-5">Cursos disponibles</h3>
         <div class="pt-5">
             <div id="carouselExample" class="carousel slide mt-4" data-bs-ride="carousel">
                 <div class="carousel-inner ps-5">
