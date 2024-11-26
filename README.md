@@ -15,7 +15,7 @@ _PD: No es necesario instalar MySQL por separado, basta con solo instalar Xampp_
 
 ## Instalacion
 
-- Primero comenzamos descargando el archivo **elearning.sql** que se encuentra dentro de la carpeta **_"Modelos_DB"_**. Si quieren pueden descargar los demás modelos generados en PowerDesigner, aunque no es necesario, basta con tener el script SQL.
+- Primero comenzamos descargando el archivo **elearning.sql** que se encuentra dentro de la carpeta **_"Modelos_BD"_**. Si quieren pueden descargar los demás modelos generados en PowerDesigner, aunque no es necesario, basta con tener el script SQL.
 
 ### Instalación de Xampp
 
