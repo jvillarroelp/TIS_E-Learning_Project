@@ -43,7 +43,13 @@
                         <a class="nav-link  text-white" href="views/user/panel.php" tabindex="-1" aria-disabled="true">Tablero de aprendizaje</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-white" href="views/curso/detalles.php" tabindex="-1" aria-disabled="true">Curso</a>
+                        <a class="nav-link  text-white" href="views/curso/detalles.php" tabindex="-1" aria-disabled="true">Detalles Curso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-white" href="views/curso/create.php" tabindex="-1" aria-disabled="true">crear Curso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-white" href="views/curso/index.php" tabindex="-1" aria-disabled="true">IndexCurso</a>
                     </li>
                 </ul>
             </div>
