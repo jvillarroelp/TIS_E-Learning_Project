@@ -1,4 +1,5 @@
 <!-- /views/login_view.php -->
+<?php include('components/header.php'); ?>
 
 <!DOCTYPE html>
 <html lang="es">

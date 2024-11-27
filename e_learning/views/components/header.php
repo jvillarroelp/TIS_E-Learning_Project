@@ -31,25 +31,25 @@
             <div class="collapse navbar-collapse justify-content-center  " id="navbarNav">
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="index.php">Inicio</a>
+                        <a class="nav-link active text-white" aria-current="page" href="/TIS_E-Learning_Project/e_learning/">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="views/login_view.php">Iniciar Sesion</a>
+                        <a class="nav-link text-white" href="/TIS_E-Learning_Project/e_learning/views/login_view.php">Iniciar Sesion</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="views/register_view.php">Registrarse</a>
+                        <a class="nav-link text-white" href="/TIS_E-Learning_Project/e_learning/views/register_view.php">Registrarse</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-white" href="views/user/panel.php" tabindex="-1" aria-disabled="true">Tablero de aprendizaje</a>
+                        <a class="nav-link  text-white" href="/TIS_E-Learning_Project/e_learning/views/user/panel.php" tabindex="-1" aria-disabled="true">Tablero de aprendizaje</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-white" href="views/curso/detalles.php" tabindex="-1" aria-disabled="true">Detalles Curso</a>
+                        <a class="nav-link  text-white" href="/TIS_E-Learning_Project/e_learning/views/curso/detalles.php" tabindex="-1" aria-disabled="true">Detalles Curso</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-white" href="views/curso/create.php" tabindex="-1" aria-disabled="true">crear Curso</a>
+                        <a class="nav-link  text-white" href="/TIS_E-Learning_Project/e_learning/views/curso/create.php" tabindex="-1" aria-disabled="true">crear Curso</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-white" href="views/curso/index.php" tabindex="-1" aria-disabled="true">IndexCurso</a>
+                        <a class="nav-link  text-white" href="/TIS_E-Learning_Project/e_learning/views/curso/index.php" tabindex="-1" aria-disabled="true">IndexCurso</a>
                     </li>
                 </ul>
             </div>
