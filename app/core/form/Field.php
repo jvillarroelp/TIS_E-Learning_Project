@@ -34,20 +34,20 @@ class Field
     {
         return sprintf(
             '
-        <div class= "form-group">
-        <label>%s</label>
-        <input type="text" name="%s" value="%s" class="form-control%s">
-        <div class="invalid-feedback">
-        %s
-        </div>
-        
-        ',
-            $this->attribute,
-            $this->type,
-            $this->model->{$this->attribute},
-            $this->model->hasError($this->attribute) ? ' is-invalid' : '',
-            $this->model->getFirstError($this->attribute)
-
+            <div class="form-group">
+                <label>%s</label>
+                <input type="%s" name="%s" value="%s" class="form-control%s">
+                <div class="invalid-feedback">
+                    %s
+                </div>
+            </div>
+            ',
+            ucfirst($this->attribute), // Label, con la primera letra en mayúscula
+            $this->type, // Tipo de input
+            $this->attribute, // name del input debe ser el atributo (rut, nombre, etc.)
+            $this->model->{$this->attribute}, // Valor actual del modelo
+            $this->model->hasError($this->attribute) ? ' is-invalid' : '', // Si hay error, agregar clase is-invalid
+            $this->model->getFirstError($this->attribute) // Mensaje de error si existe
         );
     }
     public function passwordField()

@@ -14,9 +14,11 @@ class m0001_initial
 
         $SQL = "CREATE TABLE users(
             id INT AUTO_INCREMENT PRIMARY KEY,
-            email VARCHAR(255) NOT NULL,
+            rut INT NOT NULL,
             nombre VARCHAR(255) NOT NULL,
             apellido VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL,
+            password VARCHAR(255) NOT NULL,
             status TINYINT NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         ) ENGINE=INNODB;";

@@ -81,7 +81,7 @@ abstract class Model
             self::RULE_EMAIL => 'Este campo es requerido correo',
             self::RULE_MIN => 'Este campo requiere caracteristicas {min}',
             self::RULE_MAX => 'Este campo es requiere caracteristas{max}',
-            self::RULE_MATCH => 'Este campo debe coincidir',
+            self::RULE_MATCH => 'No hay coincidencia',
 
         ];
     }
