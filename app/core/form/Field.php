@@ -42,7 +42,7 @@ class Field
                 </div>
             </div>
             ',
-            ucfirst($this->attribute), // Label, con la primera letra en mayúscula
+            $this->model->getlabel($this->attribute),
             $this->type, // Tipo de input
             $this->attribute, // name del input debe ser el atributo (rut, nombre, etc.)
             $this->model->{$this->attribute}, // Valor actual del modelo
