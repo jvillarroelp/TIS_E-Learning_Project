@@ -17,6 +17,8 @@ class User extends DbModel
     public string $nombre = '';
     public string $apellido = '';
     public string $email = '';
+    public string $region = '';
+    public string $comuna = '';
     public string $password = '';
     public string $confirmPassword = '';
 
@@ -45,6 +47,6 @@ class User extends DbModel
     }
     public function attributes(): array
     {
-        return ['rut', 'nombre', 'apellido', 'email', 'password'];
+        return ['rut', 'nombre', 'apellido', 'email','region','comuna', 'password',];
     }
 }

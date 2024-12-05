@@ -18,6 +18,8 @@ class m0001_initial
             nombre VARCHAR(255) NOT NULL,
             apellido VARCHAR(255) NOT NULL,
             email VARCHAR(255) NOT NULL,
+            region VARCHAR(255) NOT NULL,
+            comuna VARCHAR(255) NOT NULL,
             password VARCHAR(255) NOT NULL,
             status TINYINT NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
