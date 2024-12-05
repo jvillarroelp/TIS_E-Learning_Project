@@ -271,7 +271,7 @@ create table USUARIO
    RUT_USUARIO          int,
    COMUNA               varchar(20),
    REGION               varchar(255),
-   ID                   int not null,
+   ID                   int not null auto_increment,
    primary key (ID)
 );
 
