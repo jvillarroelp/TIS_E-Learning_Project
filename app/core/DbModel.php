@@ -28,20 +28,24 @@ abstract class DbModel extends Model
     }
 
     public static function findOne($where)
-    {
-        $model = new static();  // Usar static para la clase hija
-        $tableName = $model->tableName();  // Llamar a tableName de una instancia
-        $attributes = array_keys($where);
-
-        $sql = implode("AND ", array_map(fn($attr) => "$attr = :$attr", $attributes));
-        $statement = self::prepare("SELECT * FROM $tableName WHERE $sql");
-        foreach ($where as $key => $item) {
-            $statement->bindValue(":$key", $item);
-        }
-        $statement->execute();
-        return $statement->fetchObject(static::class);
+{
+    $model = new static();  // Usar static para la clase hija
+    $tableName = $model->tableName();  // Llamar a tableName de una instancia
+    $attributes = array_keys($where);
+    
+    $sql = implode(" AND ", array_map(fn($attr) => "$attr = :$attr", $attributes));
+    $statement = self::prepare("SELECT * FROM $tableName WHERE $sql");
+    
+    foreach ($where as $key => $item) {
+        $statement->bindValue(":$key", $item);
     }
-
+    
+    $statement->execute();
+    
+    // Asegúrate de devolver null si no se encuentra ningún registro
+    $result = $statement->fetchObject(static::class);
+    return $result ?: null;
+}
 
 
 

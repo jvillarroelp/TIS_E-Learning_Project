@@ -3,26 +3,20 @@
 use app\controllers\AuthController;
 use app\controllers\SiteController;
 use app\core\Application;
- 
+
 require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-
-
-
-$config= [
-    'db' =>[
-        'dsn' => $_ENV['DB_DSN'], 
+$config = [
+    'db' => [
+        'dsn' => $_ENV['DB_DSN'],
         'user' => $_ENV['DB_USER'],
-        'password' => $_ENV['DB_PASSWORD'], 
-
-    ]
+        'password' => $_ENV['DB_PASSWORD'],
+    ],
+    'userClass' => 'app\\models\\User', // Asegúrate de definir el userClass aquí
 ];
-
 
 $app = new Application(__DIR__, $config);
 
 $app->db->applyMigrations();
-
-

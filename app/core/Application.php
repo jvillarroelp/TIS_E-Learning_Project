@@ -22,10 +22,10 @@ class Application
     public Request $request;
     public Response $response;
 
-      public Session $session;
- 
+    public Session $session;
+
     public Database $db;
-     public ?DbModel $user;
+    public ?DbModel $user=null;
 
     public static Application $app;
     public Controller $controller;
@@ -44,18 +44,19 @@ class Application
         $this->session = new Session();
         $this->router = new Router($this->request, $this->response);
         $this->db = new Database($config['db']);
-        
+
         $primaryValue = $this->session->get('user');
-        if($primaryValue){
+        if ($primaryValue) {
             $userModel = new $this->userClass();
             $primaryKey = $userModel->primaryKey();
-            $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
-        }else{
+            $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]) ?? null;;
+        } else {
             $this->user = null;
         }
     }
 
-    public static function isGuest(){
+    public static function isGuest()
+    {
         return !self::$app->user;
     }
 
@@ -70,12 +71,12 @@ class Application
      * 
      * @return app/core/Controller
      */
-    public function getController() 
+    public function getController()
     {
         return $this->controller;
     }
 
-     /**
+    /**
      * 
      * @return app/core/Controller $controller
      */
@@ -83,17 +84,18 @@ class Application
     {
         $this->controller = $controller;
     }
-    public function login(DbModel $user){
- 
-         $this->user = $user;
-         $primaryKey = $user->primaryKey();
-         $primaryValue = $user->{$primaryKey};
-         $this->session->set('user',$primaryValue);
-         return true; 
-    
-    } 
-    public function logout(){
+    public function login(DbModel $user)
+    {
+
+        $this->user = $user;
+        $primaryKey = $user->primaryKey();
+        $primaryValue = $user->{$primaryKey};
+        $this->session->set('user', $primaryValue);
+        return true;
+    }
+    public function logout()
+    {
         $this->user = null;
         $this->session->remove('user');
-    }   
+    }
 }
