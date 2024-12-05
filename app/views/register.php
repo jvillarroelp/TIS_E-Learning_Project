@@ -1,4 +1,7 @@
-<?php $form = \app\core\form\Form::begin('', 'post'); ?>
+
+/** @var \app\models\Users $model */
+
+<?php $form = \app\core\form\Form::begin('', "post"); ?>
 
 <?php echo $form->field($model, 'rut') ?>
 <?php echo $form->field($model, 'nombre') ?>

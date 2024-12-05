@@ -21,4 +21,4 @@ use app\core\Model;
         return new Field($model, $attribute);
     }
 
- }
+}

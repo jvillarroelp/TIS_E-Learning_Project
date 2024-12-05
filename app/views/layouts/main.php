@@ -1,6 +1,7 @@
 <?php
 
 use app\core\Application;
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -39,12 +40,10 @@ use app\core\Application;
                     <li class="nav-item">
                         <a class="nav-link active text-white" aria-current="page" href="#">Inicio</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/login">Iniciar Sesion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/register">Registrarse</a>
-                    </li>
+
+
+
+
                     <li class="nav-item">
                         <a class="nav-link  text-white" href="/" tabindex="-1" aria-disabled="true">Tablero de aprendizaje</a>
                     </li>
@@ -58,15 +57,35 @@ use app\core\Application;
                         <a class="nav-link  text-white" href="#" tabindex="-1" aria-disabled="true">IndexCurso</a>
                     </li>
                 </ul>
+
+                <?php if (Application::isGuest()): ?>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/login">Iniciar Sesion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/register">Registrarse</a>
+                        </li>
+                    </ul>
+                <?php else: ?>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/logout">Welcome <?php echo Application::$app->user->getDisplayName() ?>
+                             (Logout)
+                            </a>
+                        </li>
+                    </ul>
+
+                <?php endif; ?>
             </div>
         </div>
     </nav>
     <div class="container">
-    <?php if (Application::$app->session->getFlash('sucess')): ?>
-    <div class="alert alert-success">
-        <?php echo Application::$app->session->getFlash('sucess') ?>
-    </div>
-<?php endif; ?>
+        <?php if (Application::$app->session->getFlash('sucess')): ?>
+            <div class="alert alert-success">
+                <?php echo Application::$app->session->getFlash('sucess') ?>
+            </div>
+        <?php endif; ?>
 
 
         {{content}}

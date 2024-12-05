@@ -3,7 +3,7 @@
 namespace app\core;
 
 /**
- * The main application class that initializes and runs the app.
+ * s
  * 
  * @package app\core
  */

@@ -21,6 +21,17 @@ class Session{
             'value' => $message
         ];
     }
+    public function set($key, $value){
+        $_SESSION[$key] = $value;
+    }
+
+    public function get($key){
+        return $_SESSION[$key] ?? false;
+    }
+
+    public function remove($key){
+        unset($_SESSION[$key]);
+    }
     
     
     public function getFlash($key){
