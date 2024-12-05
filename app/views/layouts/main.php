@@ -2,6 +2,8 @@
 
 use app\core\Application;
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -75,7 +77,6 @@ use app\core\Application;
                             </a>
                         </li>
                     </ul>
-
                 <?php endif; ?>
             </div>
         </div>

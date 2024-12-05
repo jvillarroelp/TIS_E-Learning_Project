@@ -1,5 +1,4 @@
 
-/** @var \app\models\Users $model */
 
 <?php $form = \app\core\form\Form::begin('', "post"); ?>
 

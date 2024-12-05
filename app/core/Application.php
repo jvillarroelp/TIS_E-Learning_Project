@@ -16,20 +16,16 @@ class Application
      * @var Router
      */
     public static string $ROOT_DIR;
+
     public string $userClass;
     public Router $router;
-
-
-    /**
-     * Request instance to handle HTTP requests.
-     *
-     * @var Request
-     */
     public Request $request;
     public Response $response;
+
+      public Session $session;
+ 
     public Database $db;
-    public Session $session;
-    public ?DbModel $user;
+     public ?DbModel $user;
 
     public static Application $app;
     public Controller $controller;
@@ -51,7 +47,8 @@ class Application
         
         $primaryValue = $this->session->get('user');
         if($primaryValue){
-            $primaryKey = $this->userClass::primaryKey();
+            $userModel = new $this->userClass();
+            $primaryKey = $userModel->primaryKey();
             $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
         }else{
             $this->user = null;

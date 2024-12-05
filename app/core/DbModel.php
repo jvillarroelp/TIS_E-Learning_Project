@@ -9,7 +9,7 @@ abstract class DbModel extends Model
 
     abstract public function attributes(): array;
 
-    abstract public function primaryKey():string;
+    abstract public function primaryKey(): string;
 
     public function save()
     {
@@ -17,7 +17,7 @@ abstract class DbModel extends Model
         $tableName = $this->tableName();
         $attributes = $this->attributes();
         $params = array_map(fn($attr) => ":$attr", $attributes);
-        $statement = self::prepare("INSERT INTO $tableName (" .implode(',', $attributes) . ")
+        $statement = self::prepare("INSERT INTO $tableName (" . implode(',', $attributes) . ")
 
         VALUES(" . implode(',', $params) . ")");
         foreach ($attributes as $attribute) {
@@ -28,18 +28,19 @@ abstract class DbModel extends Model
     }
 
     public static function findOne($where)
-{
-    $tableName = static::tableName();
-    $attributes = array_keys($where);
+    {
+        $model = new static();  // Usar static para la clase hija
+        $tableName = $model->tableName();  // Llamar a tableName de una instancia
+        $attributes = array_keys($where);
 
-    $sql = implode("AND ", array_map(fn($attr) => "attr = :$attr", $attributes));
-    $statement = self::prepare("SELECT *FROM $tableName WHERE $sql");
-    foreach ($where as $key => $item) {
-        $statement->bindValue(":$key", $item);
+        $sql = implode("AND ", array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $statement = self::prepare("SELECT * FROM $tableName WHERE $sql");
+        foreach ($where as $key => $item) {
+            $statement->bindValue(":$key", $item);
+        }
+        $statement->execute();
+        return $statement->fetchObject(static::class);
     }
-    $statement->execute();
-    return $statement->fetchObject(static::class);
-}
 
 
 

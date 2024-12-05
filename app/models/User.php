@@ -2,7 +2,6 @@
 
 namespace app\models; // Asegúrate de que el namespace sea correcto
 
-use app\core\Model;
 use app\core\DbModel;
 use app\core\UserModel;
 
