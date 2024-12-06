@@ -41,7 +41,7 @@ _PD: No es necesario instalar MySQL por separado, basta con solo instalar Xampp_
 ![image](https://github.com/user-attachments/assets/9992148f-7530-4ab2-a782-05fb857ca189)
 
 3. Ejecutamos _migrations_ a partir del siguiente comando ***"php migrations.php"*** desde la raiz del proyecto.
-4. Nos dirigimos a la carpeta _Public_ existente en dicho proyecto con `_cd public_` 
+4. Nos dirigimos a la carpeta _Public_ existente en dicho proyecto con `cd public` 
 5. Encendemos el servidor PHP ejecutando el siguiente comando ***php -S localhost:8080***
 
 ![image](https://github.com/user-attachments/assets/f2f09185-f95a-480d-a91b-cf9b8ef50f27)
