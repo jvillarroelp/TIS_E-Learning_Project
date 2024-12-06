@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     05-12-2024 19:19:29                          */
+/* Created on:     06-12-2024 1:00:54                           */
 /*==============================================================*/
 
 
@@ -100,12 +100,6 @@ create table CURSO
 create table DOCENTE
 (
    ID                   int not null,
-   NOMBRE               varchar(30),
-   CORREO               varchar(30),
-   CONTRASENIA          varchar(255),
-   RUT_USUARIO          int,
-   COMUNA               varchar(20),
-   REGION               varchar(255),
    ESPECIALIDAD         varchar(50),
    primary key (ID)
 );
@@ -116,14 +110,7 @@ create table DOCENTE
 create table ESTUDIANTE
 (
    ID                   int not null,
-   NOMBRE               varchar(30),
-   CORREO               varchar(30),
-   CONTRASENIA          varchar(255),
-   RUT_USUARIO          int,
-   COMUNA               varchar(20),
-   REGION               varchar(255),
    N_MATRICULA          int,
-   APELLIDO             varchar(20),
    primary key (ID)
 );
 
@@ -271,7 +258,8 @@ create table USUARIO
    RUT_USUARIO          int,
    COMUNA               varchar(20),
    REGION               varchar(255),
-   ID                   int not null auto_increment,
+   ID                   int not null,
+   APELLIDO             varchar(255),
    primary key (ID)
 );
 
@@ -350,7 +338,7 @@ alter table RELATIONSHIP_13 add constraint FK_RELATIONSHIP_14 foreign key (ID_LE
 alter table RESPUESTA_EVALUACION add constraint FK_DISPONE foreign key (COD_EVALUACION)
       references EVALUACION (COD_EVALUACION) on delete restrict on update restrict;
 
-alter table RESPUESTA_EVALUACION add constraint FK_POSEE foreign key (ID_PREGUNTA)
+alter table RESPUESTA_EVALUACION add constraint FK_POSEE2 foreign key (ID_PREGUNTA)
       references PREGUNTAS_EVALUACION (ID_PREGUNTA) on delete restrict on update restrict;
 
 alter table RESPUESTA_EVALUACION add constraint FK_RESPONDE foreign key (ID)
