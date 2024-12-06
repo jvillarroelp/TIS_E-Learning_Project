@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/6b815ceb-5c67-457f-a868-5fdd46857be5)# TIS_E-Learning_Project
+# TIS_E-Learning_Project
 Proyecto grupal de Taller de Ingeniería de Software que consiste en la creación de una plataforma E-Learning para emprendedores y pequeñas empresas, orientada al marketing digital.
 
 # Proyecto Plataforma E Learning
