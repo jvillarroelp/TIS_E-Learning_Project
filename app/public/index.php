@@ -1,14 +1,14 @@
 <?php
-
+use app\controllers\ProfesorController;
 use app\controllers\AuthController;
 use app\controllers\SiteController;
+use app\controllers\EvaluacionController;
 use app\core\Application;
- 
+use app\models\Profesor;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
-
-
 
 
 $config= [
@@ -21,7 +21,6 @@ $config= [
     ]
 ];
 
-
 $app = new Application(dirname(__DIR__),$config);
 
 $app->router->get('/', [SiteController::class,'home']);
@@ -32,6 +31,13 @@ $app->router->post('/login', [AuthController::class, 'login']);
 $app->router->get('/register', [AuthController::class, 'register']);
 $app->router->post('/register', [AuthController::class, 'register']);
 $app->router->get('/logout',[AuthController::class, 'logout']);
+
+// app/config/routes.php
+$app->router->get('/docente', [ProfesorController::class, 'ProfesorForm']);  
+$app->router->post('/docente', [ProfesorController::class, 'ProfesorForm']); 
+$app->router->get('/evaluacion', [EvaluacionController::class, 'create']);  
+$app->router->post('/evaluacion', [EvaluacionController::class, 'create']); 
+
 
 
 $app->run();

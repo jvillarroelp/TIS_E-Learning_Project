@@ -50,13 +50,13 @@ use app\core\Application;
                         <a class="nav-link  text-white" href="/" tabindex="-1" aria-disabled="true">Tablero de aprendizaje</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-white" href="#" tabindex="-1" aria-disabled="true">Detalles Curso</a>
+                        <a class="nav-link  text-white" href="/docente" tabindex="-1" aria-disabled="true">Formulario profesor</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link  text-white" href="#" tabindex="-1" aria-disabled="true">crear Curso</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-white" href="#" tabindex="-1" aria-disabled="true">IndexCurso</a>
+                        <a class="nav-link  text-white" href="/evaluacion" tabindex="-1" aria-disabled="true">Evaluacion</a>
                     </li>
                 </ul>
 
@@ -73,6 +73,7 @@ use app\core\Application;
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/logout">Welcome <?php echo Application::$app->user->getDisplayName() ?>
+
                              (Logout)
                             </a>
                         </li>

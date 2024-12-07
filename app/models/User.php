@@ -19,6 +19,7 @@ class User extends UserModel
     public string $CORREO = '';
     public string $REGION = '';
     public string $COMUNA = '';
+    public int $ID_ROL = 3;
 
     public string $CONTRASENIA = '';
     public string $confirmPassword = '';
@@ -57,7 +58,7 @@ class User extends UserModel
     }
     public function attributes(): array
     {
-        return ['RUT_USUARIO', 'NOMBRE',  'CORREO', 'REGION', 'COMUNA', 'CONTRASENIA'];
+        return ['RUT_USUARIO', 'NOMBRE',  'CORREO', 'REGION', 'COMUNA', 'CONTRASENIA','ID_ROL'];
     }
     public function labels(): array
     {
@@ -73,6 +74,6 @@ class User extends UserModel
         ];
     }
     public function getDisplayName(): string {
-        return $this->NOMBRE . ' ' . $this->CONTRASENIA;
+        return $this->NOMBRE;
     }
 }

@@ -36,6 +36,7 @@ class AuthController extends Controller
     $user = new User();
     if ($request->isPost()) {
       $user->loadData($request->getBody());
+      $user->ID_ROL = 3; 
 
       if ($user->validate() && $user->save()) {
         Application::$app->session->setFlash('sucess', 'Gracias por registrarte');

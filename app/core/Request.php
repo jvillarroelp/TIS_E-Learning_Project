@@ -53,4 +53,8 @@ class Request
         }
         return $body;
     }
+    public function getQueryParam($param)
+    {
+        return $_GET[$param] ?? null; // Devuelve null si no existe el parámetro
+    }
 }
