@@ -252,17 +252,17 @@ create table RESPUESTA_EVALUACION
 /*==============================================================*/
 /* Table: USUARIO                                               */
 /*==============================================================*/
-create table USUARIO
+CREATE TABLE USUARIO
 (
-   NOMBRE               varchar(30),
-   CORREO               varchar(30),
-   CONTRASENIA          varchar(255),
-   RUT_USUARIO          int,
-   COMUNA               varchar(20),
-   REGION               varchar(255),
-   ID                   int not null,
-   APELLIDO             varchar(255),
-   primary key (ID)
+   ID                   INT NOT NULL AUTO_INCREMENT,  
+   NOMBRE               VARCHAR(30),
+   CORREO               VARCHAR(30),
+   CONTRASENIA          VARCHAR(255),
+   RUT_USUARIO          INT,
+   COMUNA               VARCHAR(20),
+   REGION               VARCHAR(255),
+   APELLIDO             VARCHAR(255),
+   PRIMARY KEY (ID)      
 );
 
 alter table ASESORIA add constraint FK_BRINDA foreign key (DOC_ID)
