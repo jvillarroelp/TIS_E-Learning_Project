@@ -33,8 +33,8 @@ $app->router->post('/register', [AuthController::class, 'register']);
 $app->router->get('/logout',[AuthController::class, 'logout']);
 
 // app/config/routes.php
-$app->router->get('/docente', [ProfesorController::class, 'ProfesorForm']);  
-$app->router->post('/docente', [ProfesorController::class, 'ProfesorForm']); 
+$app->router->get('/profesor', [ProfesorController::class, 'ProfesorForm']);  
+$app->router->post('/profesor', [ProfesorController::class, 'ProfesorForm']); 
 $app->router->get('/evaluacion', [EvaluacionController::class, 'create']);  
 $app->router->post('/evaluacion', [EvaluacionController::class, 'create']); 
 
