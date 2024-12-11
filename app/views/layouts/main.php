@@ -53,7 +53,7 @@ use app\core\Application;
                         <a class="nav-link  text-white" href="/docente" tabindex="-1" aria-disabled="true">Formulario profesor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-white" href="#" tabindex="-1" aria-disabled="true">crear Curso</a>
+                        <a class="nav-link  text-white" href="/curso" tabindex="-1" aria-disabled="true">crear Curso</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link  text-white" href="/evaluacion" tabindex="-1" aria-disabled="true">Evaluacion</a>
