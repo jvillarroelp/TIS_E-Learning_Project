@@ -14,7 +14,7 @@ class Roles extends DbModel
 
     public function primaryKey(): string
     {
-        return 'ID';  // Asegúrate de que 'ID' es la clave primaria en tu tabla
+        return 'ID_ROL';  // Asegúrate de que 'ID' es la clave primaria en tu tabla
     }
 
     public function attributes(): array

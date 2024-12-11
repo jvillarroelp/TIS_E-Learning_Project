@@ -1,9 +1,17 @@
-<h3>Crear Rol</h3>
+<h3 class="mt-5">Crear Rol</h3>
 
 <?php $form = \app\core\form\Form::begin('', "post"); ?>
+<div class="row">
+    <div class="col">
+      <?php echo $form->field($model, 'NOMBRE') ?>  
+    </div>
+    <div class="col">
 
-<?php echo $form->field($model, 'NOMBRE') ?>
+    </div>
 
-<button type="submit" class="btn btn-primary w-100">Enviar</button>
+</div>
+
+
+<button type="submit" class="btn btn-primary mt-3">Enviar</button>
 
 <?php \app\core\form\Form::end(); ?>

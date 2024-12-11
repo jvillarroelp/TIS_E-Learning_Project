@@ -27,17 +27,23 @@ class RolesController extends Controller
     // Método para crear un rol
     public function create(Request $request, Response $response)
     {
-        $roles = new Roles();
+        $roles = new Roles();  // Crear una nueva instancia del modelo Roles
 
-        if ($request->isPost()) {
-            $roles->loadData($request->getBody());
+    // Si la solicitud es POST (cuando se envía el formulario)
+    if ($request->isPost()) {
+        $roles->loadData($request->getBody());  // Cargar los datos del formulario
 
-            // Validar y guardar los datos
-            if ($roles->validate() && $roles->save()) {
-                Application::$app->session->setFlash('success', 'Rol guardado correctamente');
-                $response->redirect('/listRoles');
-                return;
-            }
+        // Validar y guardar los datos
+        if ($roles->validate() && $roles->save()) {
+            Application::$app->session->setFlash('success', 'Rol guardado correctamente');
+            // Redirigir a la página de roles o donde sea necesario
+            return $response->redirect('/roles');  // Cambia esta ruta si es necesario
         }
+    }
+
+    // Si no es un POST (solicitud GET), simplemente renderiza el formulario vacío
+    return $this->render('roles', [
+        'model' => $roles,  // Pasamos el modelo para que esté disponible en la vista
+    ]);
     }
 }

@@ -10,7 +10,7 @@ class Profesor extends DbModel
 
     public function tableName(): string
     {
-        return 'DOCENTE';  // Nombre de la tabla
+        return 'docente';  // Nombre de la tabla
     }
 
     public function primaryKey(): string
