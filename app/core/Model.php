@@ -140,4 +140,5 @@ abstract class Model
     {
         return $this->errors[$attribute][0] ?? false;
     }
+    
 }
