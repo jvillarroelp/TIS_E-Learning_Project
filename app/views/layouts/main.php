@@ -59,6 +59,9 @@ use app\core\Application;
                         <a class="nav-link  text-white" href="/evaluacion" tabindex="-1" aria-disabled="true">Evaluacion</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link  text-white" href="/listar" tabindex="-1" aria-disabled="true">Panel Cursos</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link  text-white" href="/listRoles" tabindex="-1" aria-disabled="true">lista Rol</a>
                     </li>
                     <li class="nav-item">
