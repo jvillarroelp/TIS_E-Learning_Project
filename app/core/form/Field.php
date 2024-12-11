@@ -55,4 +55,9 @@ class Field
         $this->type = self::TYPE_PASSWORD;
         return $this;
     }
+    public function dateField()
+    {
+        $this->type = 'date';
+        return $this;
+    }
 }
