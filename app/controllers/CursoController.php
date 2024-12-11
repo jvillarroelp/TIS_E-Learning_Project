@@ -34,4 +34,15 @@ class CursoController extends Controller{
         return $this->render('curso/curso', ['model' => $curso]);
     }
 
+    public function listar()
+    {
+        
+        $cursos = CursoForm::findAllRecords();
+
+        
+        return $this->render('listar/listar', [
+            'cursos' => $cursos
+        ]);
+    }
+
 }
