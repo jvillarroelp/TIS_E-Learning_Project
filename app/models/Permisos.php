@@ -6,6 +6,7 @@ use app\core\DbModel;
 
 class Permisos extends DbModel
 {
+   
     public string $NOMBRE = '';  // Define la propiedad NOMBRE
 
     public function tableName(): string
@@ -29,4 +30,11 @@ class Permisos extends DbModel
             'NOMBRE' => [self::RULE_REQUIRED],  // Asegúrate de que la propiedad NOMBRE esté incluida en las reglas
         ];
     }
+
+
+
+
+   
+
+    
 }

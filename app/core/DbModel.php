@@ -48,7 +48,7 @@ abstract class DbModel extends Model
     }
     public static function findAllRecords(): array
     {
-        // Crear una instancia de la clase hija (Roles)
+
         $model = new static();  // Usar `static` para que se instancie la clase hija
 
         // Obtener el nombre de la tabla desde la instancia de la clase
@@ -63,6 +63,58 @@ abstract class DbModel extends Model
         return $statement->fetchAll(\PDO::FETCH_CLASS, static::class);
     }
 
+    public function update(): bool
+    {
+        $tableName = $this->tableName(); // Obtener nombre de la tabla
+        $attributes = $this->attributes(); // Obtener atributos de la tabla
+        $primaryKey = $this->primaryKey(); // Obtener la clave primaria
+
+        // Preparamos los campos para la actualización
+        $set = implode(", ", array_map(fn($attr) => "$attr = :$attr", $attributes));
+
+        // Aquí asumimos que el valor de la clave primaria es un atributo de la clase
+        $primaryKeyValue = $this->{$primaryKey};  // Suponiendo que el valor de la clave primaria está en el objeto
+
+        // Preparamos la sentencia SQL
+        $sql = "UPDATE $tableName SET $set WHERE $primaryKey = :primaryKey";
+        $statement = self::prepare($sql);
+
+        // Vinculamos los valores
+        foreach ($attributes as $attribute) {
+            $statement->bindValue(":$attribute", $this->{$attribute});
+        }
+
+        // Vinculamos el valor de la clave primaria
+        $statement->bindValue(":primaryKey", $primaryKeyValue);
+
+        // Ejecutamos la consulta de actualización
+        $statement->execute();
+
+        return true;
+    }
+    
+    public function delete(): bool
+    {
+        $tableName = $this->tableName(); // Obtener el nombre de la tabla
+        $primaryKey = $this->primaryKey(); // Obtener la clave primaria
+        
+        // Obtener el valor de la clave primaria del objeto
+        $primaryKeyValue = $this->{$primaryKey};
+        
+        // Preparar la sentencia SQL de eliminación
+        $sql = "DELETE FROM $tableName WHERE $primaryKey = :primaryKey";
+        
+        // Preparar la sentencia
+        $statement = self::prepare($sql);
+        
+        // Vincular el valor de la clave primaria
+        $statement->bindValue(":primaryKey", $primaryKeyValue);
+        
+        // Ejecutar la consulta de eliminación
+        $result = $statement->execute();
+        
+        return $result;
+    }
 
     public static function prepare($sql)
     {

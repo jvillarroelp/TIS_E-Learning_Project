@@ -10,7 +10,7 @@ use app\models\Roles;
 use app\models\Permisos;
 
 class PermisosController extends Controller
-{ 
+{
     public function create(Request $request, Response $response)
     {
         $permisos = new Permisos();  // Crear una nueva instancia del modelo Roles
@@ -45,7 +45,30 @@ class PermisosController extends Controller
             'permisos' => $permisos,
         ]);
     }
+    // En el controlador PermisosController
+    public function delete(Request $request, Response $response)
+    {
+        // Obtenemos el ID del permiso que se quiere eliminar desde la URL o del cuerpo de la solicitud
+        $idPermiso = $request->getBody()['ID_PERMISO'] ?? null;
 
-    // Método para crear un rol
-   
+        if ($idPermiso) {
+            // Buscar el permiso por ID
+            $permiso = Permisos::findOne(['ID_PERMISO' => $idPermiso]);
+
+            if ($permiso) {
+                // Si existe el permiso, procedemos a eliminarlo
+                if ($permiso->delete()) {
+                    Application::$app->session->setFlash('success', 'Permiso eliminado correctamente');
+                } else {
+                    Application::$app->session->setFlash('error', 'No se pudo eliminar el permiso');
+                }
+            } else {
+                Application::$app->session->setFlash('error', 'Permiso no encontrado');
+            }
+        } else {
+            Application::$app->session->setFlash('error', 'ID de permiso inválido');
+        }
+
+        return $response->redirect('/listPermisos');  // Redirigir a la lista de permisos
+    }
 }

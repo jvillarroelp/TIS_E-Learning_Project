@@ -7,16 +7,24 @@
             <tr>
                 <th>ID Permiso</th>
                 <th>Nombre</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($permisos as $permiso): ?>
-                <tr>
-                    <td><?= $permiso->ID_PERMISO ?></td>
-                    <td><?= $permiso->NOMBRE ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
+        <?php foreach ($permisos as $permiso): ?>
+            <tr>
+                <td><?= $permiso->ID_PERMISO ?></td>
+                <td><?= $permiso->NOMBRE ?></td>
+                <td>
+                    <!-- Formulario para eliminar un permiso -->
+                    <form action="/deletePermiso" method="post" style="display:inline;">
+                        <input type="hidden" name="ID_PERMISO" value="<?= $permiso->ID_PERMISO ?>" />
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
     </table>
 <?php else: ?>
     <p>No se encontraron permisos.</p>
