@@ -54,4 +54,6 @@ $app->router->get('/permisos', [PermisosController::class, 'create']);
 $app->router->post('/permisos', [PermisosController::class, 'create']);
 $app->router->get('/listPermisos', [PermisosController::class, 'index']);
 
+$app->router->get('/listar', [CursoController::class, 'listar']);
+
 $app->run();
