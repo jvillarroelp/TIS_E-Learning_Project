@@ -3,6 +3,7 @@ use app\controllers\ProfesorController;
 use app\controllers\AuthController;
 use app\controllers\SiteController;
 use app\controllers\EvaluacionController;
+use app\controllers\CursoController;
 use app\core\Application;
 use app\models\Profesor;
 use app\controllers\RolesController;
@@ -38,6 +39,8 @@ $app->router->get('/profesor', [ProfesorController::class, 'ProfesorForm']);
 $app->router->post('/profesor', [ProfesorController::class, 'ProfesorForm']); 
 $app->router->get('/evaluacion', [EvaluacionController::class, 'create']);  
 $app->router->post('/evaluacion', [EvaluacionController::class, 'create']); 
+$app->router->get('/curso', [CursoController::class, 'create']);
+$app->router->post('/curso', [CursoController::class, 'create']);
 
 
 $app->router->get('/roles', [RolesController::class, 'create']);  

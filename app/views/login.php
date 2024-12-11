@@ -1,12 +1,29 @@
+<?php use app\core\form\Form; ?>
 
-<h1>Login</h1>
-<?php $form = \app\core\form\Form::begin('', "post"); ?>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header text-white text-center" style="background-color: #2e3267;">
+                    <h2>Login</h2>
+                </div>
+                <div class="card-body">
+                    <?php $form = Form::begin('', "post"); ?>
 
+                    <div class="mb-3">
+                        <?php echo $form->field($model, 'email'); ?>
+                    </div>
+                    <div class="mb-3">
+                        <?php echo $form->field($model, 'password')->passwordField(); ?>
+                    </div>
 
-<?php echo $form->field($model, 'email') ?>
+                    <div class="d-grid">
+                        <button type="submit" class="btn text-white" style="background-color: #2e3267;">Enviar</button>
+                    </div>
 
-<?php echo $form->field($model, 'password')->passwordField() ?>
-
-<button type="submit" class="btn btn-primary w-100">Enviar</button>
-
-<?php \app\core\form\Form::end(); ?>
+                    <?php Form::end(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
