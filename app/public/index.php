@@ -62,4 +62,6 @@ $app->router->post('/editPermiso', [PermisosController::class, 'update']);
 // En routes.php
 $app->router->post('/deletePermiso', [PermisosController::class, 'delete']);
 
+$app->router->get('/listar', [CursoController::class, 'listar']);
+
 $app->run();
