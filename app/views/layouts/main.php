@@ -58,6 +58,12 @@ use app\core\Application;
                     <li class="nav-item">
                         <a class="nav-link  text-white" href="/evaluacion" tabindex="-1" aria-disabled="true">Evaluacion</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-white" href="/listRoles" tabindex="-1" aria-disabled="true">lista Rol</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-white" href="/roles" tabindex="-1" aria-disabled="true">Crear Rol</a>
+                    </li>
                 </ul>
 
                 <?php if (Application::isGuest()): ?>

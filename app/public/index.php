@@ -5,6 +5,7 @@ use app\controllers\SiteController;
 use app\controllers\EvaluacionController;
 use app\core\Application;
 use app\models\Profesor;
+use app\controllers\RolesController;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -37,5 +38,10 @@ $app->router->get('/profesor', [ProfesorController::class, 'ProfesorForm']);
 $app->router->post('/profesor', [ProfesorController::class, 'ProfesorForm']); 
 $app->router->get('/evaluacion', [EvaluacionController::class, 'create']);  
 $app->router->post('/evaluacion', [EvaluacionController::class, 'create']); 
+
+
+$app->router->get('/roles', [RolesController::class, 'create']);  
+$app->router->post('/roles', [RolesController::class, 'create']);
+$app->router->get('/listRoles', [RolesController::class, 'index']);
 
 $app->run();

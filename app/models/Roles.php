@@ -1,38 +1,32 @@
 <?php
-namespace app\models;
 
+namespace app\models;
 use app\core\DbModel;
-use app\core\Application;
-class Role extends DbModel
+
+class Roles extends DbModel
 {
-    public int $ID = 0;
     public string $NOMBRE = '';
 
     public function tableName(): string
     {
-        return 'roles';
+        return 'roles'; // Asegúrate de que el nombre de la tabla sea 'roles'
     }
 
     public function primaryKey(): string
     {
-        return 'ID';
+        return 'ID';  // Asegúrate de que 'ID' es la clave primaria en tu tabla
     }
 
     public function attributes(): array
     {
-        return ['NOMBRE'];
+        return ['NOMBRE'];  // Define los atributos de la tabla
     }
-
-    // Método para obtener los permisos de un rol
-  
     public function rules(): array
     {
         return [
-          
-            'NOMBRE_ROL' => [self::RULE_REQUIRED],
             
-
-
+            'NOMBRE' => [self::RULE_REQUIRED],
+            
         ];
     }
 }
