@@ -9,18 +9,23 @@
             <tr>
                 <th>ID Rol</th>
                 <th>Nombre</th>
-                
-               
+                <th>Acciones</th>        
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($roles as $role): ?>
-                <tr>
-                    <td><?= $role->ID_ROL ?></td>
-                    <td><?= $role->NOMBRE ?></td>
-                </tr>
-
-            <?php endforeach; ?>
+        <?php foreach ($roles as $rol): ?>
+            <tr>
+                <td><?= $rol->ID_ROL ?></td>
+                <td><?= $rol->NOMBRE ?></td>
+                <td>
+                    <!-- Formulario para eliminar un permiso -->
+                    <form action="/deleteRol" method="post" style="display:inline;">
+                    <input type="hidden" name="ID_ROL" value="<?= $rol->ID_ROL ?>"/>
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
         </tbody>
     </table>
 <?php else: ?>
