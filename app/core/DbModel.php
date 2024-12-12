@@ -114,10 +114,12 @@ abstract class DbModel extends Model
         $result = $statement->execute();
         
         return $result;
-    }
+    } 
+   
+
 
     public static function prepare($sql)
     {
         return Application::$app->db->pdo->prepare($sql);
-    }
+    }    
 }

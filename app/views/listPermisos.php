@@ -7,6 +7,7 @@
             <tr>
                 <th>ID Permiso</th>
                 <th>Nombre</th>
+                <th>Permisos Asignados</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -15,13 +16,35 @@
             <tr>
                 <td><?= $permiso->ID_PERMISO ?></td>
                 <td><?= $permiso->NOMBRE ?></td>
+
                 <td>
-                    <!-- Formulario para eliminar un permiso -->
-                    <form action="/deletePermiso" method="post" style="display:inline;">
-                        <input type="hidden" name="ID_PERMISO" value="<?= $permiso->ID_PERMISO ?>" />
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <?php if (!empty($rol->permisos)): ?>
+                        <?php foreach ($rol->permisos as $permiso): ?>
+                            <?= $permiso['NOMBRE'] ?> 
+                            <a href="/roles/eliminarPermiso?ID_ROL=<?= $rol->ID_ROL ?>&ID_PERMISO=<?= $permiso['ID_PERMISO'] ?>" class="btn btn-danger btn-sm">Eliminar</a><br>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>No tiene permisos asignados.</p>
+                    <?php endif; ?>
+                </td>
+                <td>
+                    <form action="/roles/asignarPermiso" method="POST">
+                        <input type="hidden" name="ID_ROL" value="<?= $rol->ID_ROL ?>">
+                        <select name="ID_PERMISO">
+                            <?php foreach ($permisos as $permiso): ?>
+                                <option value="<?= $permiso->ID_PERMISO ?>"><?= $permiso->NOMBRE ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Asignar Permiso</button>
                     </form>
                 </td>
+
+
+
+
+
+
+               
             </tr>
         <?php endforeach; ?>
     </tbody>

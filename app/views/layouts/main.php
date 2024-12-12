@@ -76,6 +76,7 @@ use app\core\Application;
                     <li class="nav-item">
                         <a class="nav-link  text-white" href="/editPermiso" tabindex="-1" aria-disabled="true">Editar Permisos</a>
                     </li>
+                   
                 </ul>
 
                 <?php if (Application::isGuest()): ?>

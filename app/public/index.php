@@ -8,8 +8,9 @@ use app\core\Application;
 use app\models\Profesor;
 use app\controllers\RolesController;
 use app\models\Permisos;
-
+use app\controllers\RolPermisoController;
 use app\controllers\PermisosController;
+use app\models\RolPermiso;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -52,6 +53,11 @@ $app->router->get('/listRoles', [RolesController::class, 'index']);
 
 $app->router->post('/deleteRol', [RolesController::class, 'delete']);
 
+$app->router->get('/roles', [RolesController::class, 'index']); // Ruta para ver los roles
+$app->router->post('/rolPermiso/assignPermission', [RolPermisoController::class, 'assignPermission']); // Ruta para asignar permiso a rol
+
+
+
 
 $app->router->get('/permisos', [PermisosController::class, 'create']);  
 $app->router->post('/permisos', [PermisosController::class, 'create']);
@@ -66,5 +72,7 @@ $app->router->post('/editPermiso', [PermisosController::class, 'update']);
 $app->router->post('/deletePermiso', [PermisosController::class, 'delete']);
 
 $app->router->get('/listar', [CursoController::class, 'listar']);
+
+
 
 $app->run();

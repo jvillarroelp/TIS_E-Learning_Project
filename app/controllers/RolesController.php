@@ -7,6 +7,9 @@ use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
 use app\models\Roles;
+use app\models\RolPermiso;
+use app\models\Permisos;
+use app\core\DbModel;
 
 class RolesController extends Controller
 {
@@ -15,12 +18,16 @@ class RolesController extends Controller
     {
         // Usar el método estático findAllRecords de Roles para obtener todos los roles
         $roles = Roles::findAllRecords();  // Recuperar todos los roles
+        $permisos = Permisos::findAllRecords(); 
+
+       
 
         // Verificación: Muestra los roles obtenidos para depuración
 
         // Renderizar la vista 'roles-list' y pasar los roles obtenidos
         return $this->render('listRoles', [
             'roles' => $roles,
+            'permisos' => $permisos,
         ]);
     }
 
@@ -71,5 +78,6 @@ class RolesController extends Controller
 
         return $response->redirect('/listRoles');  // Redirigir a la lista de permisos
     }
-    
+   
+
 }
