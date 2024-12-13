@@ -51,6 +51,7 @@ $app->router->post('/evaluacion', [EvaluacionController::class, 'create']);
 $app->router->get('/curso', [CursoController::class, 'create']);
 $app->router->post('/curso', [CursoController::class, 'create']);
 
+$app->router->get('/listEvaluacion', [EvaluacionController::class, 'index']); // Ruta para lista de evaluaciones
 
 $app->router->get('/roles', [RolesController::class, 'create']);  
 $app->router->post('/roles', [RolesController::class, 'create']);
