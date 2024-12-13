@@ -76,6 +76,9 @@ use app\core\Application;
                     <li class="nav-item">
                         <a class="nav-link  text-white" href="/editPermiso" tabindex="-1" aria-disabled="true">Editar Permisos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-white" href="/listModulos" tabindex="-1" aria-disabled="true">Lista Modulos</a>
+                    </li>
                    
                 </ul>
 

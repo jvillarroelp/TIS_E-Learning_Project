@@ -4,12 +4,14 @@ use app\controllers\AuthController;
 use app\controllers\SiteController;
 use app\controllers\EvaluacionController;
 use app\controllers\CursoController;
+use app\Controllers\ModuloController;
 use app\core\Application;
 use app\models\Profesor;
 use app\controllers\RolesController;
 use app\models\Permisos;
 use app\controllers\RolPermisoController;
 use app\controllers\PermisosController;
+use app\models\Modulo;
 use app\models\RolPermiso;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -49,11 +51,13 @@ $app->router->post('/curso', [CursoController::class, 'create']);
 
 $app->router->get('/roles', [RolesController::class, 'create']);  
 $app->router->post('/roles', [RolesController::class, 'create']);
+
+$app->router->get('/roles', [RolesController::class, 'index']); // Ruta para ver los roles
+
 $app->router->get('/listRoles', [RolesController::class, 'index']);
 
 $app->router->post('/deleteRol', [RolesController::class, 'delete']);
 
-$app->router->get('/roles', [RolesController::class, 'index']); // Ruta para ver los roles
 $app->router->post('/rolPermiso/assignPermission', [RolPermisoController::class, 'assignPermission']); // Ruta para asignar permiso a rol
 
 
@@ -72,6 +76,16 @@ $app->router->post('/editPermiso', [PermisosController::class, 'update']);
 $app->router->post('/deletePermiso', [PermisosController::class, 'delete']);
 
 $app->router->get('/listar', [CursoController::class, 'listar']);
+
+
+$app->router->get('/modulos/create', [ModuloController::class, 'create']);
+
+$app->router->post('/modulos/create', [ModuloController::class, 'create']);
+
+$app->router->get('/listModulos', [ModuloController::class, 'index']);
+
+
+
 
 
 

@@ -8,6 +8,7 @@
             <th>ID</th>
             <th>Nombre del Curso</th>
             <th>Acciones</th>
+            <th>Modulo</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,14 @@
                         Crear Evaluación
                     </a>
                 </td>
+                <td>
+                <td>
+                    <!-- Modificar este enlace para enviar el COD_CURSO -->
+                    <a href="/modulos/create?COD_CURSO=<?= $curso->COD_CURSO ?>" class="btn btn-primary">
+                        Crear Módulo
+                    </a>
+                </td>
+
             </tr>
         <?php endforeach; ?>
     </tbody>
