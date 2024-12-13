@@ -18,6 +18,17 @@
                 <tr>
                     <td><?= htmlspecialchars($modulo->ID_MODULO) ?></td>
                     <td><?= htmlspecialchars($modulo->NOMBRE_MODULO) ?></td>
+
+
+                    <td>
+                    <!-- Formulario para eliminar un rol -->
+                    <form action="/deleteModulo" method="post" style="display:inline;">
+                    <input type="hidden" name="ID_MODULO" value="<?= $modulo->ID_MODULO ?>"/>
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+
+                    
                     <td>
                         <a href="/modulos/edit/<?= $modulo->ID_MODULO ?>" class="btn btn-primary">Editar</a>
                     </td>

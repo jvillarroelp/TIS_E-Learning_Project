@@ -58,4 +58,31 @@ class ModuloController extends Controller
         ]);
     }
 
+
+    public function delete(Request $request, Response $response)
+    {
+        // Obtenemos el ID del permiso que se quiere eliminar desde la URL o del cuerpo de la solicitud
+        $idModulo = $request->getBody()['ID_MODULO'] ?? null;
+
+        if ($idModulo) {
+            // Buscar el permiso por ID
+            $modulo = Modulo::findOne(['ID_MODULO' => $idModulo]);
+
+            if ($modulo) {
+                // Si existe el permiso, procedemos a eliminarlo
+                if ($modulo->delete()) {
+                    Application::$app->session->setFlash('success', 'Permiso eliminado correctamente');
+                } else {
+                    Application::$app->session->setFlash('error', 'No se pudo eliminar el permiso');
+                }
+            } else {
+                Application::$app->session->setFlash('error', 'Permiso no encontrado');
+            }
+        } else {
+            Application::$app->session->setFlash('error', 'ID de permiso inválido');
+        }
+
+        return $response->redirect('/listModulos');  // Redirigir a la lista de permisos
+    }
+
 }
