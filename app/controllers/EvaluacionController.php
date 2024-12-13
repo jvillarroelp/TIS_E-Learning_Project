@@ -1,14 +1,12 @@
 <?php
 
 namespace app\Controllers;
+
 use app\core\Application;
 use app\core\Controller;
-
-use app\core\Request;use app\core\Router;
-use app\models\Evaluacion;
-use app\models\LoginForm;
+use app\core\Request;
 use app\core\Response;
-
+use app\models\Evaluacion;
 
 class EvaluacionController extends Controller
 {
@@ -29,6 +27,18 @@ class EvaluacionController extends Controller
 
         return $this->render('evaluacionForm', [
             'model' => $evaluacion,
+        ]);
+    }
+
+    // Método para mostrar la lista de evaluaciones
+    public function index(Request $request, Response $response)
+    {
+        // Obtener todas las evaluaciones desde el modelo
+        $evaluaciones = Evaluacion::findAllRecords();
+
+        // Renderizar la vista con la lista de evaluaciones
+        return $this->render('/listEvaluacion', [
+            'evaluaciones' => $evaluaciones,
         ]);
     }
 }
