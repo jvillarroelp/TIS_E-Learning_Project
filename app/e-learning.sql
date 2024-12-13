@@ -45,7 +45,7 @@ drop table if exists USUARIO;
 /*==============================================================*/
 create table ASESORIA
 (
-   ID_ASESORIA          int not null,
+   ID_ASESORIA          INT NOT NULL AUTO_INCREMENT, 
    COD_CURSO            int not null,
    ID                   int not null,
    DOC_ID               int not null,
@@ -71,7 +71,7 @@ create table CERTIFICADO
 /*==============================================================*/
 create table CONTENIDO
 (
-   ID_CONTENIDO         int not null,
+   ID_CONTENIDO          INT NOT NULL AUTO_INCREMENT, 
    ID_LECCION           int not null,
    TITULO_CONTENIDO     varchar(50),
    SUB_TITULO           varchar(100),
@@ -145,7 +145,7 @@ create table IMPARTE
 /*==============================================================*/
 create table LECCION
 (
-   ID_LECCION           int not null,
+   ID_LECCION           INT NOT NULL AUTO_INCREMENT, 
    ID_MODULO            int not null,
    NOMBRE_LECCION       varchar(50),
    primary key (ID_LECCION)
@@ -156,7 +156,7 @@ create table LECCION
 /*==============================================================*/
 create table MODULOS
 (
-   ID_MODULO            int not null,
+   ID_MODULO             INT NOT NULL AUTO_INCREMENT, 
    COD_CURSO            int not null,
    NOMBRE_MODULO        varchar(50),
    primary key (ID_MODULO)
@@ -181,7 +181,7 @@ create table PAGO
 /*==============================================================*/
 create table PREGUNTAS_EVALUACION
 (
-   ID_PREGUNTA          int not null,
+   ID_PREGUNTA           INT NOT NULL AUTO_INCREMENT, 
    COD_EVALUACION       int not null,
    ID                   int not null,
    PREGUNTA             text,
@@ -218,7 +218,7 @@ create table REALIZA
 /*==============================================================*/
 create table RECURSOS
 (
-   COD_RECURSO          int not null,
+   COD_RECURSO           INT NOT NULL AUTO_INCREMENT, 
    NOMBRE_RECURSO       varchar(50),
    TIPO_RECURSO         varchar(50),
    DESCRIPCION_RECURSO  text,
@@ -240,7 +240,7 @@ create table RELATIONSHIP_13
 /*==============================================================*/
 create table RESPUESTA_EVALUACION
 (
-   ID_RESPUESTA         int not null,
+   ID_RESPUESTA          INT NOT NULL AUTO_INCREMENT, 
    ID_PREGUNTA          int not null,
    COD_EVALUACION       int not null,
    ID                   int not null,
