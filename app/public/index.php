@@ -70,7 +70,7 @@ $app->router->get('/listPermisos', [PermisosController::class, 'index']);
 $app->router->get('/editPermiso', [PermisosController::class, 'edit']);
 
 // Para procesar la actualización del permiso (POST)
-$app->router->post('/editPermiso', [PermisosController::class, 'update']);
+$app->router->post('/editPermiso', [PermisosController::class, 'update']);  
 
 // En routes.php 
 $app->router->post('/deletePermiso', [PermisosController::class, 'delete']);
@@ -83,7 +83,7 @@ $app->router->get('/modulos/create', [ModuloController::class, 'create']);
 $app->router->post('/modulos/create', [ModuloController::class, 'create']);
 
 $app->router->get('/listModulos', [ModuloController::class, 'index']);
-
+$app->router->post('/deleteModulo', [ModuloController::class, 'delete']);
 
 
 
