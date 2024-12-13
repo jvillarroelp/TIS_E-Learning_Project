@@ -74,13 +74,8 @@ use app\core\Application;
                         <a class="nav-link  text-white" href="/listPermisos" tabindex="-1" aria-disabled="true">Lista Permisos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-white" href="/editPermiso" tabindex="-1" aria-disabled="true">Editar Permisos</a>
+                        <a class="nav-link  text-white" href="/preguntas" tabindex="-1" aria-disabled="true">Preguntas</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/listModulos" tabindex="-1" aria-disabled="true">Lista Modulos</a>
-                    </li>
-                    
-                   
                 </ul>
 
                 <?php if (Application::isGuest()): ?>
