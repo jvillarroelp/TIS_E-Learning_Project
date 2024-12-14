@@ -17,6 +17,9 @@
                         <?php echo $form->field($model, 'NOMBRE'); ?>
                     </div>
                     <div class="mb-3">
+                        <?php echo $form->field($model, 'APELLIDO'); ?>
+                    </div>
+                    <div class="mb-3">
                         <?php echo $form->field($model, 'CORREO'); ?>
                     </div>
                     <div class="mb-3">
