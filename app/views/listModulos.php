@@ -1,5 +1,5 @@
 <h1>Lista de Módulos</h1>
-
+<a href="/modulos" class="btn btn-success mt-3 mb-3">Creal Modulos</a>
 <table class="table">
     <thead>
         <tr>

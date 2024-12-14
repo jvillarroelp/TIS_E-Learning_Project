@@ -16,6 +16,7 @@ use app\models\Modulo;
 use app\models\RolPermiso;
 use app\controllers\LeccionController;
 use app\controllers\ContenidoController;
+use app\controllers\RecursosController;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -99,6 +100,12 @@ $app->router->post('/deleteLeccion', [LeccionController::class, 'delete']);
 $app->router->get('/contenidos/create', [ContenidoController::class, 'create']);
 
 $app->router->post('/contenidos/create', [ContenidoController::class, 'create']);
+
+$app->router->get('/recursos/create', [RecursosController::class, 'create']);
+$app->router->post('/recursos/create', [RecursosController::class, 'create']);
+$app->router->get('/listRecursos', [RecursosController::class, 'index']);
+
+
 
 
 $app->run();
