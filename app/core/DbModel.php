@@ -1,7 +1,7 @@
 <?php
 
 namespace app\core;
-
+use app\models\User;
 abstract class DbModel extends Model
 {
 
@@ -117,9 +117,34 @@ abstract class DbModel extends Model
     } 
    
 
+  
+
 
     public static function prepare($sql)
     {
         return Application::$app->db->pdo->prepare($sql);
     }    
+
+    public static function checkPermission($roleId, $accion)
+{
+    // Usamos el nombre del permiso 'NOMBRE_PERMISO' en lugar de 'accion'
+    $sql = "SELECT p.ID_PERMISO
+            FROM permisos p
+            JOIN rol_permisos rp ON rp.ID_PERMISO = p.ID_PERMISO
+            JOIN roles r ON rp.ID_ROL = r.ID_ROL
+            WHERE r.ID_ROL = :role_id AND p.NOMBRE_PERMISO = :accion";  // Usamos 'NOMBRE_PERMISO' como el campo de permiso
+
+    // Preparar la consulta usando PDO
+    $statement = Application::$app->db->pdo->prepare($sql);
+    $statement->bindValue(":role_id", $roleId);
+    $statement->bindValue(":accion", $accion);
+    $statement->execute();
+
+    // Si hay un resultado, el rol tiene el permiso, de lo contrario no lo tiene
+    $result = $statement->fetch(\PDO::FETCH_ASSOC);
+    return $result ? true : false;  // Retorna true si tiene el permiso, false si no
+}
+
+    
+
 }

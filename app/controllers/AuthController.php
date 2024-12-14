@@ -16,20 +16,27 @@ class AuthController extends Controller
 {
 
   public function login(Request $request, Response $response)
-  {
+{
     $loginForm = new LoginForm();
     if ($request->isPost()) {
-      $loginForm->loadData($request->getBody());
-      if ($loginForm->validate() && $loginForm->login()) {
-        $response->redirect('/');
-        return;
-      }
+        $loginForm->loadData($request->getBody());
+
+        // Si la validación y el login son correctos
+        if ($loginForm->validate() && $loginForm->login()) {
+            // Si el login es exitoso, redirige al inicio
+            $response->redirect('/');
+            return;
+        }
     }
+
+    // Si el login no es exitoso, mostramos el formulario de login
     $this->setLayout('auth');
-    return $this->render('login',[
-      'model' => $loginForm 
+    return $this->render('login', [
+        'model' => $loginForm
     ]);
-  }
+}
+
+
 
   public function register(Request $request)
   {

@@ -32,7 +32,7 @@
                         <!-- Selecciona un permiso -->
                         <select name="ID_PERMISO">
                             <?php foreach ($permisos as $permiso): ?>
-                                <option value="<?= $permiso->ID_PERMISO ?>"><?= $permiso->NOMBRE ?></option>
+                                <option value="<?= $permiso->ID_PERMISO ?>"><?= $permiso->NOMBRE_PERMISO ?></option>
                             <?php endforeach; ?>
                         </select>
                         <!-- Pasar el ID del rol -->
