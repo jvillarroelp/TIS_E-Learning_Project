@@ -20,31 +20,31 @@ use app\core\DbModel;
 class CursoController extends Controller
 {
 
-    public function create(Request $request)
+    public function create(Request $request, Response $response)
     {
-        // Suponiendo que tienes el ID del rol almacenado en la sesión del usuario
-        $roleId = Application::$app->session->get('user_role');  // Esto es un ejemplo, ajusta según tu lógica
-
-        // Verificar si el usuario tiene permiso para crear cursos
-        if (!DbModel::checkPermission($roleId, 'Crear curso')) {
-            Application::$app->session->setFlash('error', 'No tienes permisos para crear cursos.');
-            Application::$app->response->redirect('/');
+        // Verificar si el usuario está autenticado
+        if (Application::isGuest()) {
+            // Si no está autenticado, redirigir al login
+            Application::$app->session->setFlash('error', 'Por favor, inicia sesión para crear un curso.');
+            $response->redirect('/login');
             return;
         }
 
-        // Si tiene el permiso, proceder con la creación del curso
         $curso = new CursoForm();
+
         if ($request->isPost()) {
             $curso->loadData($request->getBody());
+
             if ($curso->validate() && $curso->save()) {
                 Application::$app->session->setFlash('success', 'Curso creado con éxito.');
-                Application::$app->response->redirect('/');
+                $response->redirect('/');
                 return;
             }
         }
 
         return $this->render('curso/curso', ['model' => $curso]);
     }
+
 
 
     public function listar()
