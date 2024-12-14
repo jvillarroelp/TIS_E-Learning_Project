@@ -8,7 +8,8 @@ use app\core\DbModel;
 class Evaluacion extends DbModel
 {
     public string $COD_EVALUACION = '';
-    public string $COD_CURSO = '';
+    public string $COD_CURSO;
+    
     public string $FECHA_DIAGNOSTICO = '';
     public string $DESCRIPCION_EVALUACION = '';
     public string $NOMBRE_EVALUACION= '';

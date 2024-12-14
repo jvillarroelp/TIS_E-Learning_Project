@@ -15,12 +15,12 @@
         <?php foreach ($permisos as $permiso): ?>
             <tr>
                 <td><?= $permiso->ID_PERMISO ?></td>
-                <td><?= $permiso->NOMBRE ?></td>
+                <td><?= $permiso->NOMBRE_PERMISO ?></td>
 
                 <td>
                     <?php if (!empty($rol->permisos)): ?>
                         <?php foreach ($rol->permisos as $permiso): ?>
-                            <?= $permiso['NOMBRE'] ?> 
+                            <?= $permiso['NOMBRE_PERMISO'] ?> 
                             <a href="/roles/eliminarPermiso?ID_ROL=<?= $rol->ID_ROL ?>&ID_PERMISO=<?= $permiso['ID_PERMISO'] ?>" class="btn btn-danger btn-sm">Eliminar</a><br>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -32,19 +32,12 @@
                         <input type="hidden" name="ID_ROL" value="<?= $rol->ID_ROL ?>">
                         <select name="ID_PERMISO">
                             <?php foreach ($permisos as $permiso): ?>
-                                <option value="<?= $permiso->ID_PERMISO ?>"><?= $permiso->NOMBRE ?></option>
+                                <option value="<?= $permiso->ID_PERMISO ?>"><?= $permiso->NOMBRE_PERMISO ?></option>
                             <?php endforeach; ?>
                         </select>
                         <button type="submit" class="btn btn-primary">Asignar Permiso</button>
                     </form>
                 </td>
-
-
-
-
-
-
-               
             </tr>
         <?php endforeach; ?>
     </tbody>

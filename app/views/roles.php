@@ -3,7 +3,7 @@
 <?php $form = \app\core\form\Form::begin('', "post"); ?>
 <div class="row">
     <div class="col">
-      <?php echo $form->field($model, 'NOMBRE') ?>  
+      <?php echo $form->field($model, 'NOMBRE_ROL') ?>  
     </div>
     <div class="col">
 

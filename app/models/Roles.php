@@ -5,7 +5,7 @@ use app\core\DbModel;
 
 class Roles extends DbModel
 {
-    public string $NOMBRE = '';
+    public string $NOMBRE_ROL = '';
 
     public function tableName(): string
     {
@@ -19,13 +19,13 @@ class Roles extends DbModel
 
     public function attributes(): array
     {
-        return ['NOMBRE'];  // Define los atributos de la tabla
+        return ['NOMBRE_ROL'];  // Define los atributos de la tabla
     }
     public function rules(): array
     {
         return [
             
-            'NOMBRE' => [self::RULE_REQUIRED],
+            'NOMBRE_ROL' => [self::RULE_REQUIRED],
             
         ];
     }

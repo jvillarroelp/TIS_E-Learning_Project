@@ -56,7 +56,6 @@ $app->router->get('/listEvaluacion', [EvaluacionController::class, 'index']); //
 $app->router->get('/roles', [RolesController::class, 'create']);  
 $app->router->post('/roles', [RolesController::class, 'create']);
 
-$app->router->get('/roles', [RolesController::class, 'index']); // Ruta para ver los roles
 
 $app->router->get('/listRoles', [RolesController::class, 'index']);
 

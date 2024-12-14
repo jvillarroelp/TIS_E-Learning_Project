@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     06-12-2024 1:00:54                           */
+/* Created on:     13-12-2024 22:51:40                          */
 /*==============================================================*/
 
 
@@ -26,6 +26,8 @@ drop table if exists MODULOS;
 
 drop table if exists PAGO;
 
+drop table if exists PERMISOS;
+
 drop table if exists PREGUNTAS_EVALUACION;
 
 drop table if exists PRESENTA;
@@ -34,9 +36,11 @@ drop table if exists REALIZA;
 
 drop table if exists RECURSOS;
 
-drop table if exists RELATIONSHIP_13;
-
 drop table if exists RESPUESTA_EVALUACION;
+
+drop table if exists ROLES;
+
+drop table if exists ROL_PERMISOS;
 
 drop table if exists USUARIO;
 
@@ -45,7 +49,7 @@ drop table if exists USUARIO;
 /*==============================================================*/
 create table ASESORIA
 (
-   ID_ASESORIA          INT NOT NULL AUTO_INCREMENT, 
+   ID_ASESORIA          int not null,
    COD_CURSO            int not null,
    ID                   int not null,
    DOC_ID               int not null,
@@ -71,7 +75,7 @@ create table CERTIFICADO
 /*==============================================================*/
 create table CONTENIDO
 (
-   ID_CONTENIDO          INT NOT NULL AUTO_INCREMENT, 
+   ID_CONTENIDO         INT NOT NULL AUTO_INCREMENT,
    ID_LECCION           int not null,
    TITULO_CONTENIDO     varchar(50),
    SUB_TITULO           varchar(100),
@@ -90,7 +94,7 @@ create table CURSO
    FECHA_INICIO         date,
    FECHA_FIN            date,
    ESTADO               varchar(10),
-   DESCRIPCION_CURSO    char(10),
+   DESCRIPCION_CURSO    text,
    primary key (COD_CURSO)
 );
 
@@ -107,8 +111,6 @@ create table DOCENTE
 /*==============================================================*/
 /* Table: ESTUDIANTE                                            */
 /*==============================================================*/
-/*==============================================================*/
-
 create table ESTUDIANTE
 (
    ID                   int not null,
@@ -145,7 +147,7 @@ create table IMPARTE
 /*==============================================================*/
 create table LECCION
 (
-   ID_LECCION           INT NOT NULL AUTO_INCREMENT, 
+   ID_LECCION           INT NOT NULL AUTO_INCREMENT,
    ID_MODULO            int not null,
    NOMBRE_LECCION       varchar(50),
    primary key (ID_LECCION)
@@ -156,7 +158,7 @@ create table LECCION
 /*==============================================================*/
 create table MODULOS
 (
-   ID_MODULO             INT NOT NULL AUTO_INCREMENT, 
+   ID_MODULO            INT NOT NULL AUTO_INCREMENT,
    COD_CURSO            int not null,
    NOMBRE_MODULO        varchar(50),
    primary key (ID_MODULO)
@@ -177,11 +179,21 @@ create table PAGO
 );
 
 /*==============================================================*/
+/* Table: PERMISOS                                              */
+/*==============================================================*/
+create table PERMISOS
+(
+   ID_PERMISO           INT NOT NULL AUTO_INCREMENT,
+   NOMBRE_PERMISO       varchar(255),
+   primary key (ID_PERMISO)
+);
+
+/*==============================================================*/
 /* Table: PREGUNTAS_EVALUACION                                  */
 /*==============================================================*/
 create table PREGUNTAS_EVALUACION
 (
-   ID_PREGUNTA           INT NOT NULL AUTO_INCREMENT, 
+   ID_PREGUNTA          INT NOT NULL AUTO_INCREMENT,
    COD_EVALUACION       int not null,
    ID                   int not null,
    PREGUNTA             text,
@@ -218,7 +230,8 @@ create table REALIZA
 /*==============================================================*/
 create table RECURSOS
 (
-   COD_RECURSO           INT NOT NULL AUTO_INCREMENT, 
+   COD_RECURSO          int not null,
+   ID_LECCION           int not null,
    NOMBRE_RECURSO       varchar(50),
    TIPO_RECURSO         varchar(50),
    DESCRIPCION_RECURSO  text,
@@ -226,21 +239,11 @@ create table RECURSOS
 );
 
 /*==============================================================*/
-/* Table: RELATIONSHIP_13                                       */
-/*==============================================================*/
-create table RELATIONSHIP_13
-(
-   COD_RECURSO          int not null,
-   ID_LECCION           int not null,
-   primary key (COD_RECURSO, ID_LECCION)
-);
-
-/*==============================================================*/
 /* Table: RESPUESTA_EVALUACION                                  */
 /*==============================================================*/
 create table RESPUESTA_EVALUACION
 (
-   ID_RESPUESTA          INT NOT NULL AUTO_INCREMENT, 
+   ID_RESPUESTA         INT NOT NULL AUTO_INCREMENT,
    ID_PREGUNTA          int not null,
    COD_EVALUACION       int not null,
    ID                   int not null,
@@ -250,19 +253,40 @@ create table RESPUESTA_EVALUACION
 );
 
 /*==============================================================*/
+/* Table: ROLES                                                 */
+/*==============================================================*/
+create table ROLES
+(
+   ID_ROL               INT NOT NULL AUTO_INCREMENT,
+   NOMBRE_ROL           varchar(255),
+   primary key (ID_ROL)
+);
+
+/*==============================================================*/
+/* Table: ROL_PERMISOS                                          */
+/*==============================================================*/
+create table ROL_PERMISOS
+(
+   ID_PERMISO           int not null,
+   ID_ROL               int not null,
+   primary key (ID_PERMISO, ID_ROL)
+);
+
+/*==============================================================*/
 /* Table: USUARIO                                               */
 /*==============================================================*/
-CREATE TABLE USUARIO
+create table USUARIO
 (
-   ID                   INT NOT NULL AUTO_INCREMENT,  
-   NOMBRE               VARCHAR(30),
-   CORREO               VARCHAR(30),
-   CONTRASENIA          VARCHAR(255),
-   RUT_USUARIO          INT,
-   COMUNA               VARCHAR(20),
-   REGION               VARCHAR(255),
-   APELLIDO             VARCHAR(255),
-   PRIMARY KEY (ID)      
+   ID                  INT NOT NULL AUTO_INCREMENT,
+   ID_ROL               int not null,
+   RUT_USUARIO          int,
+   NOMBRE_PERMISO       varchar(255),
+   APELLIDO             varchar(255),
+   CORREO               varchar(30),
+   CONTRASENIA          char(255),
+   REGION               varchar(20),
+   COMUNA               varchar(20),
+   primary key (ID)
 );
 
 alter table ASESORIA add constraint FK_BRINDA foreign key (DOC_ID)
@@ -331,18 +355,24 @@ alter table REALIZA add constraint FK_REALIZA foreign key (COD_CURSO)
 alter table REALIZA add constraint FK_REALIZA2 foreign key (ID)
       references ESTUDIANTE (ID) on delete restrict on update restrict;
 
-alter table RELATIONSHIP_13 add constraint FK_RELATIONSHIP_13 foreign key (COD_RECURSO)
-      references RECURSOS (COD_RECURSO) on delete restrict on update restrict;
-
-alter table RELATIONSHIP_13 add constraint FK_RELATIONSHIP_14 foreign key (ID_LECCION)
+alter table RECURSOS add constraint FK_RELATIONSHIP_13 foreign key (ID_LECCION)
       references LECCION (ID_LECCION) on delete restrict on update restrict;
 
 alter table RESPUESTA_EVALUACION add constraint FK_DISPONE foreign key (COD_EVALUACION)
       references EVALUACION (COD_EVALUACION) on delete restrict on update restrict;
 
-alter table RESPUESTA_EVALUACION add constraint FK_POSEE2 foreign key (ID_PREGUNTA)
+alter table RESPUESTA_EVALUACION add constraint FK_POSEE foreign key (ID_PREGUNTA)
       references PREGUNTAS_EVALUACION (ID_PREGUNTA) on delete restrict on update restrict;
 
 alter table RESPUESTA_EVALUACION add constraint FK_RESPONDE foreign key (ID)
       references ESTUDIANTE (ID) on delete restrict on update restrict;
+
+alter table ROL_PERMISOS add constraint FK_ROL_PERMISOS foreign key (ID_PERMISO)
+      references PERMISOS (ID_PERMISO) on delete restrict on update restrict;
+
+alter table ROL_PERMISOS add constraint FK_ROL_PERMISOS2 foreign key (ID_ROL)
+      references ROLES (ID_ROL) on delete restrict on update restrict;
+
+alter table USUARIO add constraint FK_USER_ROLES foreign key (ID_ROL)
+      references ROLES (ID_ROL) on delete restrict on update restrict;
 

@@ -16,6 +16,7 @@ class User extends UserModel
 
     public string $RUT_USUARIO = '';
     public string $NOMBRE = '';
+    public string $APELLIDO = '';
     public string $CORREO = '';
     public string $REGION = '';
     public string $COMUNA = '';
@@ -44,6 +45,7 @@ class User extends UserModel
         return [
             'RUT_USUARIO' => [self::RULE_REQUIRED],
             'NOMBRE' => [self::RULE_REQUIRED],
+            'APELLIDO' => [self::RULE_REQUIRED],
             'CORREO' => [self::RULE_REQUIRED, self::RULE_EMAIL, [
                 self::RULE_UNIQUE,
                 'class' => self::class,
@@ -58,13 +60,14 @@ class User extends UserModel
     }
     public function attributes(): array
     {
-        return ['RUT_USUARIO', 'NOMBRE',  'CORREO', 'REGION', 'COMUNA', 'CONTRASENIA','ID_ROL'];
+        return ['RUT_USUARIO', 'NOMBRE','APELLIDO',  'CORREO', 'REGION', 'COMUNA', 'CONTRASENIA','ID_ROL'];
     }
     public function labels(): array
     {
         return [
             'RUT' => 'Rut',
             'NOMBRE' => 'Nombre',
+            'APELLIDO' => 'Apellido',
             'CORREO' => 'Email',
             'REGION' => 'Region',
             'COMUNA' => 'Comuna',

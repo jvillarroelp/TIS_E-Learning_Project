@@ -67,9 +67,7 @@ use app\core\Application;
                     <li class="nav-item">
                         <a class="nav-link  text-white" href="/listRoles" tabindex="-1" aria-disabled="true">lista Rol</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/roles" tabindex="-1" aria-disabled="true">Crear Rol</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link  text-white" href="/permisos" tabindex="-1" aria-disabled="true">Crear Permisos</a>
                     </li>

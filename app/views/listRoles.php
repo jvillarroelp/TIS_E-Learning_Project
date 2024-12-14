@@ -17,7 +17,7 @@
         <?php foreach ($roles as $rol): ?>
             <tr>
                 <td><?= $rol->ID_ROL ?></td>
-                <td><?= $rol->NOMBRE ?></td>
+                <td><?= $rol->NOMBRE_ROL ?></td>
                 <td>
                     <!-- Formulario para eliminar un rol -->
                     <form action="/deleteRol" method="post" style="display:inline;">

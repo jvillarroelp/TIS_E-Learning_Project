@@ -7,7 +7,7 @@ use app\core\DbModel;
 class Permisos extends DbModel
 {
    
-    public string $NOMBRE = '';  // Define la propiedad NOMBRE
+    public string $NOMBRE_PERMISO = '';  // Define la propiedad NOMBRE
 
     public function tableName(): string
     {
@@ -21,13 +21,13 @@ class Permisos extends DbModel
 
     public function attributes(): array
     {
-        return ['NOMBRE'];  // Define que la propiedad NOMBRE es un atributo de la tabla
+        return ['NOMBRE_PERMISO'];  // Define que la propiedad NOMBRE es un atributo de la tabla
     }
     
     public function rules(): array
     {
         return [
-            'NOMBRE' => [self::RULE_REQUIRED],  // Asegúrate de que la propiedad NOMBRE esté incluida en las reglas
+            'NOMBRE_PERMISO' => [self::RULE_REQUIRED],  // Asegúrate de que la propiedad NOMBRE esté incluida en las reglas
         ];
     }
 
