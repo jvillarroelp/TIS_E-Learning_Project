@@ -1,4 +1,6 @@
-<?php use app\core\form\Form; ?>
+<?php
+
+use app\core\form\Form; ?>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -28,11 +30,9 @@
                     <div class="mb-3">
                         <?php echo $form->field($model, 'DESCRIPCION_CURSO'); ?>
                     </div>
+                    
 
-                    <div class="d-grid">
-                        <button type="submit" class="btn text-white" style="background-color: #2e3267;">Crear Curso</button>
-                    </div>
-
+                    <button type="submit" class="btn btn-primary mt-3">Crear Curso</button>
                     <?php Form::end(); ?>
                 </div>
             </div>

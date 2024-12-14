@@ -11,6 +11,7 @@ use app\core\DbModel;
  */
 class CursoForm extends DbModel
 {
+    public int $ID;
     public int $COD_CURSO = 0;
     public string $NOMBRE_CURSO = '';
     public string $FECHA_INICIO = '';
@@ -20,7 +21,7 @@ class CursoForm extends DbModel
 
     public function tableName(): string
     {
-        return 'CURSO'; // Nombre de la tabla en la base de datos
+        return 'curso'; // Nombre de la tabla en la base de datos
     }
 
     public function primaryKey(): string
@@ -30,17 +31,20 @@ class CursoForm extends DbModel
 
     public function attributes(): array
     {
-        return ['COD_CURSO', 'NOMBRE_CURSO', 'FECHA_INICIO', 'FECHA_FIN', 'ESTADO', 'DESCRIPCION_CURSO'];
+        return ['COD_CURSO','ID', 'NOMBRE_CURSO', 'FECHA_INICIO', 'FECHA_FIN', 'ESTADO', 'DESCRIPCION_CURSO'];
     }
 
     public function rules(): array
     {
         return [
+            'COD_CURSO' => [self::RULE_REQUIRED],
+
             'NOMBRE_CURSO' => [self::RULE_REQUIRED],
             'FECHA_INICIO' => [self::RULE_REQUIRED],
             'FECHA_FIN' => [self::RULE_REQUIRED],
             'ESTADO' => [self::RULE_REQUIRED],
             'DESCRIPCION_CURSO' => [self::RULE_REQUIRED],
+            'ID' => [self::RULE_REQUIRED],
         ];
     }
 

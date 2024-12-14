@@ -1,6 +1,15 @@
+<?php
+// Suponiendo que $_SESSION['user_id'] tiene el ID del docente autenticado
+$docenteID = $_SESSION['user_id'];  // Obtén el ID del docente desde la sesión
+?>
+
+
+
 <?php use app\core\form\Form; ?>
 
 <h1>Lista de Cursos</h1>
+<a href="/curso" class="btn btn-success mt-3 mb-3">Crear</a>
+
 
 <table class="table">
     <thead>

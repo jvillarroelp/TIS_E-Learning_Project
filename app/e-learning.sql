@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     13-12-2024 22:51:40                          */
+/* Created on:     14-12-2024 13:23:31                          */
 /*==============================================================*/
 
 
@@ -17,8 +17,6 @@ drop table if exists DOCENTE;
 drop table if exists ESTUDIANTE;
 
 drop table if exists EVALUACION;
-
-drop table if exists IMPARTE;
 
 drop table if exists LECCION;
 
@@ -76,6 +74,7 @@ create table CERTIFICADO
 create table CONTENIDO
 (
    ID_CONTENIDO         INT NOT NULL AUTO_INCREMENT,
+
    ID_LECCION           int not null,
    TITULO_CONTENIDO     varchar(50),
    SUB_TITULO           varchar(100),
@@ -90,6 +89,7 @@ create table CONTENIDO
 create table CURSO
 (
    COD_CURSO            int not null,
+   ID                   int not null,
    NOMBRE_CURSO         varchar(50),
    FECHA_INICIO         date,
    FECHA_FIN            date,
@@ -133,21 +133,12 @@ create table EVALUACION
 );
 
 /*==============================================================*/
-/* Table: IMPARTE                                               */
-/*==============================================================*/
-create table IMPARTE
-(
-   ID                   int not null,
-   COD_CURSO            int not null,
-   primary key (ID, COD_CURSO)
-);
-
-/*==============================================================*/
 /* Table: LECCION                                               */
 /*==============================================================*/
 create table LECCION
 (
    ID_LECCION           INT NOT NULL AUTO_INCREMENT,
+
    ID_MODULO            int not null,
    NOMBRE_LECCION       varchar(50),
    primary key (ID_LECCION)
@@ -159,6 +150,7 @@ create table LECCION
 create table MODULOS
 (
    ID_MODULO            INT NOT NULL AUTO_INCREMENT,
+
    COD_CURSO            int not null,
    NOMBRE_MODULO        varchar(50),
    primary key (ID_MODULO)
@@ -194,6 +186,7 @@ create table PERMISOS
 create table PREGUNTAS_EVALUACION
 (
    ID_PREGUNTA          INT NOT NULL AUTO_INCREMENT,
+
    COD_EVALUACION       int not null,
    ID                   int not null,
    PREGUNTA             text,
@@ -244,6 +237,7 @@ create table RECURSOS
 create table RESPUESTA_EVALUACION
 (
    ID_RESPUESTA         INT NOT NULL AUTO_INCREMENT,
+
    ID_PREGUNTA          int not null,
    COD_EVALUACION       int not null,
    ID                   int not null,
@@ -257,7 +251,8 @@ create table RESPUESTA_EVALUACION
 /*==============================================================*/
 create table ROLES
 (
-   ID_ROL               INT NOT NULL AUTO_INCREMENT,
+   ID_ROL              INT NOT NULL AUTO_INCREMENT,
+
    NOMBRE_ROL           varchar(255),
    primary key (ID_ROL)
 );
@@ -277,7 +272,8 @@ create table ROL_PERMISOS
 /*==============================================================*/
 create table USUARIO
 (
-   ID                  INT NOT NULL AUTO_INCREMENT,
+   ID                   INT NOT NULL AUTO_INCREMENT,
+
    ID_ROL               int not null,
    RUT_USUARIO          int,
    NOMBRE_PERMISO       varchar(255),
@@ -307,6 +303,9 @@ alter table CERTIFICADO add constraint FK_OBTIENE foreign key (ID)
 alter table CONTENIDO add constraint FK_TIENE foreign key (ID_LECCION)
       references LECCION (ID_LECCION) on delete restrict on update restrict;
 
+alter table CURSO add constraint FK_IMPARTE foreign key (ID)
+      references DOCENTE (ID) on delete restrict on update restrict;
+
 alter table DOCENTE add constraint FK_INHERITANCE_2 foreign key (ID)
       references USUARIO (ID) on delete restrict on update restrict;
 
@@ -317,12 +316,6 @@ alter table EVALUACION add constraint FK_ASIGNA foreign key (COD_CURSO)
       references CURSO (COD_CURSO) on delete restrict on update restrict;
 
 alter table EVALUACION add constraint FK_DESARROLLA foreign key (ID)
-      references DOCENTE (ID) on delete restrict on update restrict;
-
-alter table IMPARTE add constraint FK_IMPARTE foreign key (COD_CURSO)
-      references CURSO (COD_CURSO) on delete restrict on update restrict;
-
-alter table IMPARTE add constraint FK_IMPARTE2 foreign key (ID)
       references DOCENTE (ID) on delete restrict on update restrict;
 
 alter table LECCION add constraint FK_DIVIDE foreign key (ID_MODULO)

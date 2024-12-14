@@ -78,7 +78,12 @@ class Router
         ob_start();
         include_once Application::$ROOT_DIR . "/views/layouts/$layout.php";
         return ob_get_clean();
+
+
     }
+
+
+    
     protected function renderOnlyView($view, $params)
     {
         foreach ($params as $key => $value) {

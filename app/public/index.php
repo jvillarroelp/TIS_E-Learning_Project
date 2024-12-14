@@ -49,8 +49,11 @@ $app->router->get('/logout',[AuthController::class, 'logout']);
 
 $app->router->get('/evaluacion', [EvaluacionController::class, 'create']);  
 $app->router->post('/evaluacion', [EvaluacionController::class, 'create']); 
-$app->router->get('/curso', [CursoController::class, 'create']);
-$app->router->post('/curso', [CursoController::class, 'create']);
+// En Router.php
+$app->router->get('/curso', [CursoController::class, 'create']);  // Para el método GET
+$app->router->post('/curso', [CursoController::class, 'create']);  // Para el método POST
+
+
 
 $app->router->get('/listEvaluacion', [EvaluacionController::class, 'index']); // Ruta para lista de evaluaciones
 
