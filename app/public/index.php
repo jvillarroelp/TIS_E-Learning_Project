@@ -17,7 +17,8 @@ use app\models\RolPermiso;
 use app\controllers\LeccionController;
 use app\controllers\ContenidoController;
 use app\controllers\RecursosController;
-
+use app\controllers\EstudianteController;
+use app\controllers\DocenteController;
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
@@ -45,8 +46,7 @@ $app->router->post('/register', [AuthController::class, 'register']);
 $app->router->get('/logout',[AuthController::class, 'logout']);
 
 // app/config/routes.php
-$app->router->get('/profesor', [ProfesorController::class, 'ProfesorForm']);  
-$app->router->post('/profesor', [ProfesorController::class, 'ProfesorForm']); 
+
 $app->router->get('/evaluacion', [EvaluacionController::class, 'create']);  
 $app->router->post('/evaluacion', [EvaluacionController::class, 'create']); 
 $app->router->get('/curso', [CursoController::class, 'create']);
@@ -105,6 +105,14 @@ $app->router->get('/recursos/create', [RecursosController::class, 'create']);
 $app->router->post('/recursos/create', [RecursosController::class, 'create']);
 $app->router->get('/listRecursos', [RecursosController::class, 'index']);
 
+
+$app->router->get('/estudiantes', [EstudianteController::class, 'create']);
+$app->router->post('/estudiantes', [EstudianteController::class, 'create']);
+
+
+
+$app->router->get('/docentes', [DocenteController::class, 'create']);
+$app->router->post('/docentes', [DocenteController::class, 'create']);
 
 
 
