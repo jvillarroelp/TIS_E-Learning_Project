@@ -73,4 +73,32 @@ class RecursosController extends Controller
             'recursos' => $recursos,
         ]);
     }
+
+    public function delete(Request $request, Response $response)
+    {
+        // Obtenemos el ID del recurso que se quiere eliminar desde la URL o del cuerpo de la solicitud
+        $codRecurso = $request->getBody()['COD_RECURSO'] ?? null;
+    
+        if ($codRecurso) {
+            // Buscar el recurso por ID
+            $recurso = Recurso::findOne(['COD_RECURSO' => $codRecurso]);
+    
+            if ($recurso) {
+                // Si existe el recurso, procedemos a eliminarlo
+                if ($recurso->delete()) {
+                    Application::$app->session->setFlash('success', 'Recurso eliminado correctamente');
+                } else {
+                    Application::$app->session->setFlash('error', 'No se pudo eliminar el recurso');
+                }
+            } else {
+                Application::$app->session->setFlash('error', 'Recurso no encontrado');
+            }
+        } else {
+            Application::$app->session->setFlash('error', 'ID de recurso inválido');
+        }
+    
+        // Redirigir a la lista de recursos
+        return $response->redirect('/');  // Asegúrate que esta es la ruta correcta
+    }
+    
 }

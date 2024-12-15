@@ -86,4 +86,34 @@ class CursoController extends Controller
             'cursos' => $cursos
         ]);
     }
+
+
+
+    public function delete(Request $request, Response $response)
+    {
+        // Obtenemos el ID del curso que se quiere eliminar desde la URL o del cuerpo de la solicitud
+        $codCurso = $request->getBody()['COD_CURSO'] ?? null;
+    
+        if ($codCurso) {
+            // Buscar el curso por ID
+            $curso = CursoForm::findOne(['COD_CURSO' => $codCurso]);
+    
+            if ($curso) {
+                // Si el curso existe, procedemos a eliminarlo
+                if ($curso->delete()) {
+                    Application::$app->session->setFlash('success', 'Curso eliminado correctamente');
+                } else {
+                    Application::$app->session->setFlash('error', 'No se pudo eliminar el curso');
+                }
+            } else {
+                Application::$app->session->setFlash('error', 'Curso no encontrado');
+            }
+        } else {
+            Application::$app->session->setFlash('error', 'ID de curso inválido');
+        }
+    
+        // Redirigir a la lista de cursos
+        return $response->redirect('/listar');  // Asegúrate que esta es la ruta de la lista de cursos
+    }
+    
 }

@@ -1,5 +1,5 @@
 <h3 >Lista de Preguntas</h3>
-<a href="#" class="btn btn-success mt-3 mb-3">Creal rol</a>
+<a href="#" class="btn btn-success mt-3 mb-3">Crear Preguntas</a>
 
 <?php if (count($preguntas) > 0): ?>
     <table class="table table-bordered ">

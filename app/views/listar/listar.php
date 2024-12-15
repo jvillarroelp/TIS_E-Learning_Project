@@ -1,17 +1,5 @@
-<?php
-// Suponiendo que $_SESSION['user_id'] tiene el ID del docente autenticado
-$docenteID = $_SESSION['user_id'];  // Obtén el ID del docente desde la sesión
-?>
-
-
-
-<?php
-
-use app\core\form\Form; ?>
-
 <h1>Lista de Cursos</h1>
 <a href="/curso" class="btn btn-success mt-3 mb-3">Crear</a>
-
 
 <table class="table">
     <thead>
@@ -20,6 +8,7 @@ use app\core\form\Form; ?>
             <th>Nombre del Curso</th>
             <th>Acciones</th>
             <th>Modulo</th>
+            <th>Eliminar</th> <!-- Agregar columna de eliminar -->
         </tr>
     </thead>
     <tbody>
@@ -32,15 +21,18 @@ use app\core\form\Form; ?>
                         Crear Evaluación
                     </a>
                 </td>
-
                 <td>
-                <td>
-                    <!-- Modificar este enlace para enviar el COD_CURSO -->
                     <a href="/modulos/create?COD_CURSO=<?= $curso->COD_CURSO ?>" class="btn btn-primary">
                         Crear Módulo
                     </a>
                 </td>
-
+                <td>
+                    <!-- Formulario para eliminar un curso -->
+                    <form action="/curso/delete" method="post" style="display:inline;">
+                        <input type="hidden" name="COD_CURSO" value="<?= htmlspecialchars($curso->COD_CURSO) ?>" />
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>

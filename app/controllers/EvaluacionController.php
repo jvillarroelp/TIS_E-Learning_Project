@@ -85,4 +85,32 @@ class EvaluacionController extends Controller
             'evaluaciones' => $evaluaciones,
         ]);
     }
+
+    public function delete(Request $request, Response $response)
+    {
+        // Obtenemos el ID de la evaluación que se quiere eliminar desde la URL o del cuerpo de la solicitud
+        $codEvaluacion = $request->getBody()['COD_EVALUACION'] ?? null;
+    
+        if ($codEvaluacion) {
+            // Buscar la evaluación por ID
+            $evaluacion = Evaluacion::findOne(['COD_EVALUACION' => $codEvaluacion]);
+    
+            if ($evaluacion) {
+                // Si existe la evaluación, procedemos a eliminarla
+                if ($evaluacion->delete()) {
+                    Application::$app->session->setFlash('success', 'Evaluación eliminada correctamente');
+                } else {
+                    Application::$app->session->setFlash('error', 'No se pudo eliminar la evaluación');
+                }
+            } else {
+                Application::$app->session->setFlash('error', 'Evaluación no encontrada');
+            }
+        } else {
+            Application::$app->session->setFlash('error', 'ID de evaluación inválido');
+        }
+    
+        // Redirigir a la lista de evaluaciones
+        return $response->redirect('/');  // Asegúrate que esta es la ruta correcta
+    }
+    
 }

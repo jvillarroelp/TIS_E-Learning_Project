@@ -60,6 +60,7 @@ $app->router->get('/evaluacion', [EvaluacionController::class, 'create']);
 // En Router.php
 $app->router->get('/curso', [CursoController::class, 'create']);  // Para el método GET
 $app->router->post('/curso', [CursoController::class, 'create']);  // Para el método POST
+$app->router->post('/curso/delete', [CursoController::class, 'delete']);
 
 
 
@@ -107,10 +108,13 @@ $app->router->get('/listLecciones', [LeccionController::class, 'index']);
 
 $app->router->post('/deleteLeccion', [LeccionController::class, 'delete']);
 
+$app->router->post('/deleteContenido', [ContenidoController::class, 'delete']);
+
 
 $app->router->get('/contenidos/create', [ContenidoController::class, 'create']);
-
 $app->router->post('/contenidos/create', [ContenidoController::class, 'create']);
+$app->router->get('/listContenidos', [ContenidoController::class, 'index']);
+
 
 $app->router->get('/recursos/create', [RecursosController::class, 'create']);
 $app->router->post('/recursos/create', [RecursosController::class, 'create']);
@@ -143,6 +147,8 @@ $app->router->get('/esquema', [EsquemaController::class, 'index']);
 
 
 
+$app->router->post('/evaluacion/delete', [EvaluacionController::class, 'delete']);
 
+$app->router->post('/recurso/delete', [RecursosController::class, 'delete']);
 
 $app->run();

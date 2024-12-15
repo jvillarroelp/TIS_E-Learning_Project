@@ -48,5 +48,56 @@ class ContenidoController extends Controller
             'model' => $contenidos,  // Pasamos el modelo para que esté disponible en la vista
         ]);
     }
+    public function index(Request $request, Response $response)
+    {
+        // Verificar si el usuario está autenticado
+        if (!isset($_SESSION['user_id'])) {
+            Application::$app->response->redirect('/login');
+            return;
+        }
+
+        // Obtener el rol del usuario desde la sesión
+        $user = User::findOne(['ID' => $_SESSION['user_id']]);
+        if ($user && $user->ID_ROL !== 2) { // Verificar que el rol sea de docente (suponiendo que 2 es docente)
+            Application::$app->response->redirect('/');
+            return;
+        }
+
+        // Obtener todos los contenidos desde la base de datos
+        $contenidos = Contenido::findAllRecords();  // Método que obtiene todos los contenidos
+
+        // Renderizar la vista 'listContenidos' y pasar los contenidos
+        return $this->render('listContenidos', [
+            'contenidos' => $contenidos,
+        ]);
+    }
+
+
+
+    public function delete(Request $request, Response $response)
+{
+    // Obtenemos el ID del permiso que se quiere eliminar desde la URL o del cuerpo de la solicitud
+    $idContenido = $request->getBody()['ID_CONTENIDO'] ?? null;
+
+    if ($idContenido) {
+        // Buscar el permiso por ID
+        $contenido =  contenido::findOne(['ID_CONTENIDO' => $idContenido]);
+
+        if ($contenido) {
+            // Si existe el permiso, procedemos a eliminarlo
+            if ($contenido->delete()) {
+                Application::$app->session->setFlash('success', 'Permiso eliminado correctamente');
+            } else {
+                Application::$app->session->setFlash('error', 'No se pudo eliminar el permiso');
+            }
+        } else {
+            Application::$app->session->setFlash('error', 'Permiso no encontrado');
+        }
+    } else {
+        Application::$app->session->setFlash('error', 'ID de permiso inválido');
+    }
+
+    return $response->redirect('/listContenidos');  // Redirigir a la lista de permisos
 }
 
+}

@@ -20,11 +20,12 @@
                     <td><?= htmlspecialchars($recurso->NOMBRE_RECURSO) ?></td>
 
                     <td>
-                        <!-- Formulario para eliminar un rol -->
-                        <form action="" method="post" style="display:inline;">
-                            <input type="hidden" name="ID_RECURSO" value="<?= htmlspecialchars($recurso->ID_RECURSO) ?>" />
+                        <!-- Formulario para eliminar un recurso -->
+                        <form action="/recurso/delete" method="post" style="display:inline;">
+                            <input type="hidden" name="COD_RECURSO" value="<?= htmlspecialchars($recurso->COD_RECURSO) ?>" />
                             <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
+
                     </td>
                 </tr>
             <?php endforeach; ?>
