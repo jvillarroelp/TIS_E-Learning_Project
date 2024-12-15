@@ -1,16 +1,14 @@
-<!-- app/views/roles-list.php -->
-
-<h3 >Lista de Roles</h3>
-<a href="/roles" class="btn btn-success mt-3 mb-3">Creal rol</a>
+<h3 >Lista de Preguntas</h3>
+<a href="#" class="btn btn-success mt-3 mb-3">Creal rol</a>
 
 <?php if (count($roles) > 0): ?>
     <table class="table table-bordered ">
         <thead >
             <tr>
-                <th>ID Rol</th>
-                <th>Nombre</th>
+                <th>ID Preguntas</th>
+                <th>Pregunta</th>
+                <th>Tipo </th>
                 <th>Acciones</th>        
-                <th>Asignar pemriso</th>
             </tr>
         </thead>
         <tbody>

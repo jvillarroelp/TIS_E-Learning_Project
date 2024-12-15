@@ -1,73 +1,35 @@
-<?php
-/** @var $evaluaciones app\models\Evaluacion[] */
-?>
+<!-- app/views/roles-list.php -->
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Evaluaciones</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #2e3267;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
+<h3 >Lista de Roles</h3>
+<a href="#" class="btn btn-success mt-3 mb-3">Creal rol</a>
 
-        .container {
-            margin-top: 50px;
-        }
+<?php if (count($evaluaciones) > 0): ?>
+    <table class="table table-bordered ">
+        <thead >
+            <tr>
+                <th>Codigo de evaluación</th>
+                <th>Nombre de evaluacion</th>
+                <th>Fecha de realizamiento</th>
+                <th>Acciones</th>        
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($evaluaciones as $evaluacion): ?>
+            <tr>
+                <td><?= $evaluacion->COD_EVALUACION ?></td>
+                <td><?= $evaluacion->NOMBRE_EVALUACION ?></td>
+                <td><?= $evaluacion->FECHA_DIAGNOSTICO ?></td>
 
-        .card {
-            margin-bottom: 20px;
-        }
 
-        .card-header {
-            background-color: #2e3267;
-            color: white;
-        }
-
-        .btn {
-            background-color: #2e3267;
-            color: white;
-        }
-
-        .btn:hover {
-            background-color: #4a4e8a;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h1 class="text-center text-white">Lista de Evaluaciones</h1>
-
-    <?php if (empty($evaluaciones)): ?>
-        <p class="text-center text-white">No hay evaluaciones disponibles.</p>
-    <?php else: ?>
-        <div class="row">
-            <?php foreach ($evaluaciones as $evaluacion): ?>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title"><?= htmlspecialchars($evaluacion->NOMBRE_EVALUACION) ?></h5>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text"><strong>Descripción:</strong> <?= htmlspecialchars($evaluacion->DESCRIPCION_EVALUACION) ?></p>
-                            <p class="card-text"><strong>Fecha de Diagnóstico:</strong> <?= $evaluacion->FECHA_DIAGNOSTICO ?></p>
-                            <p class="card-text"><strong>Curso:</strong> <?= $evaluacion->COD_CURSO ?></p>
-                            <p class="card-text"><strong>Usuario RUT:</strong> <?= $evaluacion->RUT_USUARIO ?></p>
-                            <a href="#" class="btn">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+                <td>
+                    <a href="/preguntas?COD_EVALUACION=<?= $evaluacion->COD_EVALUACION ?>" class="btn btn-primary">
+                        Crear Preguntas Evaluación
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else: ?>
+    <p>No se encontraron roles.</p>
+<?php endif; ?>

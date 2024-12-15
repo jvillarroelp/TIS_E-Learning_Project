@@ -34,9 +34,9 @@
                         </a>
                     </td>
                     <td>
-                    <a href="/recursos/create?ID_LECCION=<?= $leccion->ID_LECCION ?>" class="btn btn-primary">
-    Crear Recursos
-</a>
+                        <a href="/recursos/create?ID_LECCION=<?= $leccion->ID_LECCION ?>" class="btn btn-primary">
+                            Crear Recursos
+                        </a>
 
                     </td>
 
