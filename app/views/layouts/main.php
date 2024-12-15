@@ -31,7 +31,7 @@ use app\core\Application;
 <body>
     <nav class="navbar navbar-expand-lg navbar-light pb-4 pt-4 ps-5" style="background-color: #2e3267;">
         <div class="container-fluid">
-            <a class="navbar-brand text-white ps-5" href="#">
+            <a class="navbar-brand text-white ps-5" href="/">
                 <h1>ProEduca</h1>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@ use app\core\Application;
             <div class="collapse navbar-collapse justify-content-center  " id="navbarNav">
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link active text-white" aria-current="page" href="/">Inicio</a>
                     </li>
 
 

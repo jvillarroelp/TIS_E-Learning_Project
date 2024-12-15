@@ -18,7 +18,8 @@
                                     Estado: <?= htmlspecialchars($curso->ESTADO); ?><br>
                                     Fecha de inicio: <?= htmlspecialchars($curso->FECHA_INICIO); ?>
                                 </p>
-                                <a href="#" class="btn btn-success">Inscribirse</a>
+                                <a href="/realizas?COD_CURSO=<?= $curso->COD_CURSO ?>" class="btn btn-success">Ver más</a>
+
                             </div>
                         </div>
                     </div>

@@ -96,8 +96,37 @@ class Application
         return true;
     }
     public function logout()
-    {
-        $this->user = null;
-        $this->session->remove('user');
+{
+    // Asegurarte de que la sesión está activa
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
     }
+
+    // Eliminar al usuario de la aplicación
+    $this->user = null;
+
+    // Eliminar toda la información de la sesión
+    session_unset();
+
+    // Destruir la sesión completamente
+    session_destroy();
+
+    // Borrar la cookie de sesión en el navegador
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(
+            session_name(),
+            '',
+            time() - 42000,
+            $params["path"],
+            $params["domain"],
+            $params["secure"],
+            $params["httponly"]
+        );
+    }
+
+    // Regenerar el ID de sesión para mayor seguridad
+    session_regenerate_id(true);
+}
+
 }
