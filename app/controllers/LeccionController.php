@@ -57,6 +57,8 @@ class LeccionController extends Controller
             'model' => $lecciones,  // Pasamos el modelo para que esté disponible en la vista
         ]);
     }
+
+    
     public function delete(Request $request, Response $response)
     {
         // Obtenemos el ID del permiso que se quiere eliminar desde la URL o del cuerpo de la solicitud

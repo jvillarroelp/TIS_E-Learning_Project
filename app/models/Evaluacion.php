@@ -9,14 +9,10 @@ class Evaluacion extends DbModel
 {
     public string $COD_EVALUACION = '';
     public string $COD_CURSO;
-    
+    public int $ID;
     public string $FECHA_DIAGNOSTICO = '';
     public string $DESCRIPCION_EVALUACION = '';
     public string $NOMBRE_EVALUACION= '';
-
-
-
-
 
     public function tableName(): string
     {
@@ -25,7 +21,7 @@ class Evaluacion extends DbModel
 
     public function primaryKey(): string
     {
-        return 'CODIGO_EVALUACION'; 
+        return 'COD_EVALUACION'; 
     }
 
     public function rules(): array
@@ -41,7 +37,7 @@ class Evaluacion extends DbModel
 
     public function attributes(): array
     {
-        return ['COD_EVALUACION', 'COD_CURSO', 'FECHA_DIAGNOSTICO','DESCRIPCION_EVALUACION','NOMBRE_EVALUACION'];
+        return ['COD_EVALUACION', 'ID','COD_CURSO', 'FECHA_DIAGNOSTICO','DESCRIPCION_EVALUACION','NOMBRE_EVALUACION'];
     }
 
     

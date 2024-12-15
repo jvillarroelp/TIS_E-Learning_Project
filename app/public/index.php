@@ -19,6 +19,7 @@ use app\controllers\ContenidoController;
 use app\controllers\RecursosController;
 use app\controllers\EstudianteController;
 use app\controllers\DocenteController;
+use app\controllers\PreguntasController;
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
@@ -47,8 +48,8 @@ $app->router->get('/logout',[AuthController::class, 'logout']);
 
 // app/config/routes.php
 
-$app->router->get('/evaluacion', [EvaluacionController::class, 'create']);  
-$app->router->post('/evaluacion', [EvaluacionController::class, 'create']); 
+$app->router->post('/evaluacion', [EvaluacionController::class, 'create']);
+$app->router->get('/evaluacion', [EvaluacionController::class, 'create']);
 // En Router.php
 $app->router->get('/curso', [CursoController::class, 'create']);  // Para el método GET
 $app->router->post('/curso', [CursoController::class, 'create']);  // Para el método POST
