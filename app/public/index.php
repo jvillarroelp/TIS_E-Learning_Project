@@ -24,6 +24,7 @@ use app\models\Pregunta;
 use app\controllers\RespuestaController;
 use app\controllers\RealizaController;
 use app\models\Realiza;
+use app\controllers\TableroController;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -134,6 +135,10 @@ $app->router->post('/respuestas', [RespuestaController::class, 'create']);
 $app->router->get('/realizas', [RealizaController::class, 'index']);
 
 $app->router->post('/realiza/inscribirseCurso', [RealizaController::class, 'inscribirseCurso']);
+
+// Definir la ruta para mostrar los cursos del usuario
+$app->router->get('/misCursos', [TableroController::class, 'tablero']);
+
 
 
 

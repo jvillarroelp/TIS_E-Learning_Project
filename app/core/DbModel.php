@@ -135,16 +135,40 @@ abstract class DbModel extends Model
                 JOIN rol_permisos rp ON rp.ID_PERMISO = p.ID_PERMISO
                 JOIN roles r ON rp.ID_ROL = r.ID_ROL
                 WHERE r.ID_ROL = :role_id AND p.NOMBRE_PERMISO = :accion";
-    
+
         // Preparar la consulta
         $statement = Application::$app->db->pdo->prepare($sql);
         $statement->bindValue(":role_id", $roleId);
         $statement->bindValue(":accion", $accion);  // El nombre del permiso, por ejemplo 'Crear curso'
         $statement->execute();
-    
+
         // Si existe un permiso para ese rol, se devuelve true, de lo contrario, false
         $result = $statement->fetch(\PDO::FETCH_ASSOC);
         return $result ? true : false;
     }
-    
+
+
+    public static function filtro($campo, $valor): array
+    {
+        // Instanciar el modelo (para la clase hija que la llama)
+        $model = new static();
+
+        // Obtener el nombre de la tabla desde la instancia de la clase
+        $tableName = $model->tableName();
+
+        // Construir la consulta SQL para filtrar por el campo y valor proporcionado
+        $sql = "SELECT * FROM $tableName WHERE $campo = :valor";
+
+        // Preparar la consulta
+        $statement = Application::$app->db->pdo->prepare($sql);
+
+        // Asociar el valor del campo al parámetro en la consulta
+        $statement->bindValue(":valor", $valor);
+
+        // Ejecutar la consulta
+        $statement->execute();
+
+        // Retornar los registros como objetos de la clase que llama el método
+        return $statement->fetchAll(\PDO::FETCH_CLASS, static::class);
+    }
 }

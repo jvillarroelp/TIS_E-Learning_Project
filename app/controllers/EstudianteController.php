@@ -47,4 +47,7 @@ class EstudianteController extends Controller
             'model' => $estudiante,  // Pasamos el modelo a la vista
         ]);
     }
+
+
+    
 }
