@@ -64,13 +64,22 @@ class CursoController extends Controller
         ]);
     }
 
-
-
-
-
-
-    public function listar()
+    public function listar(Request $request, Response $response)
     {
+        // Verificar si el usuario está autenticado
+        if (!isset($_SESSION['user_id'])) {
+            Application::$app->response->redirect('/login');
+            return;
+        }
+
+        // Obtener el rol del usuario desde la sesión
+        $user = User::findOne(['ID' => $_SESSION['user_id']]);
+        if ($user && $user->ID_ROL !== 2) { // Si no es docente, redirigir
+            Application::$app->response->redirect('/');
+            return;
+        }
+
+        // Obtener los cursos solo si el usuario es docente
         $cursos = CursoForm::findAllRecords();
 
         return $this->render('listar/listar', [
