@@ -171,4 +171,44 @@ abstract class DbModel extends Model
         // Retornar los registros como objetos de la clase que llama el método
         return $statement->fetchAll(\PDO::FETCH_CLASS, static::class);
     }
+
+
+
+
+    public static function isStudent(): bool
+    {
+        if (!isset($_SESSION['user_id'])) {
+            return false;  // No está autenticado
+        }
+
+        // Verificar si el usuario tiene un registro en la tabla ESTUDIANTE
+        $userId = $_SESSION['user_id'];
+        $sql = "SELECT * FROM ESTUDIANTE WHERE ID = :user_id";
+        $statement = Application::$app->db->pdo->prepare($sql);
+        $statement->bindValue(':user_id', $userId);
+        $statement->execute();
+
+        // Si encuentra un registro en la tabla ESTUDIANTE, es estudiante
+        return $statement->fetch() ? true : false;
+    }
+
+    public static function isTeacher(): bool
+    {
+        if (!isset($_SESSION['user_id'])) {
+            return false;  // No está autenticado
+        }
+
+        // Verificar si el usuario tiene un registro en la tabla DOCENTE
+        $userId = $_SESSION['user_id'];
+        $sql = "SELECT * FROM DOCENTE WHERE ID = :user_id";
+        $statement = Application::$app->db->pdo->prepare($sql);
+        $statement->bindValue(':user_id', $userId);
+        $statement->execute();
+
+        // Si encuentra un registro en la tabla DOCENTE, es docente
+        return $statement->fetch() ? true : false;
+    }
 }
+
+
+

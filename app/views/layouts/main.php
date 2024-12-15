@@ -2,8 +2,6 @@
 
 use app\core\Application;
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,70 +35,66 @@ use app\core\Application;
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-center  " id="navbarNav">
-                <ul class="navbar-nav ">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- Siempre visible -->
                     <li class="nav-item">
                         <a class="nav-link active text-white" aria-current="page" href="/">Inicio</a>
                     </li>
 
-
-
-
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/" tabindex="-1" aria-disabled="true">Tablero de aprendizaje</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/docentes" tabindex="-1" aria-disabled="true">Formulario profesor</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/curso" tabindex="-1" aria-disabled="true">crear Curso</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/evaluacion" tabindex="-1" aria-disabled="true">Evaluacion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/listEvaluacion" tabindex="-1" aria-disabled="true">Lista Evaluaciones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/listar" tabindex="-1" aria-disabled="true">Panel Cursos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/listRoles" tabindex="-1" aria-disabled="true">lista Rol</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/listLecciones" tabindex="-1" aria-disabled="true">lista lecciones</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/listModulos" tabindex="-1" aria-disabled="true">lista Modulos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/permisos" tabindex="-1" aria-disabled="true">Crear Permisos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/listPermisos" tabindex="-1" aria-disabled="true">Lista Permisos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="/preguntas" tabindex="-1" aria-disabled="true">Preguntas</a>
-                    </li>
-                </ul>
-
-                <?php if (Application::isGuest()): ?>
-                    <ul class="navbar-nav ml-auto">
+                    <!-- Elementos visibles solo para Docentes -->
+                    <?php if (!Application::isGuest() && Application::$app->user->isTeacher()): ?>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/login">Iniciar Sesion</a>
+                            <a class="nav-link text-white" href="/">Tablero de aprendizaje</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/curso">Crear Curso</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/evaluacion">Evaluación</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/listEvaluacion">Lista Evaluaciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/listar">Panel de Cursos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/listLecciones">Lista Lecciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/listModulos">Lista Módulos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/preguntas">Preguntas</a>
+                        </li>
+                    <?php endif; ?>
+
+                    <!-- Elementos visibles solo para Estudiantes -->
+                    <?php if (!Application::isGuest() && Application::$app->user->isStudent()): ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/misCursos">Mis Cursos</a>
+                        </li>
+                    <?php endif; ?>
+
+                    <!-- Elementos visibles para todos -->
+                    <?php if (Application::isGuest()): ?>
+                        <!-- Invitado -->
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/login">Iniciar Sesión</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/register">Registrarse</a>
                         </li>
-                    </ul>
-                <?php else: ?>
+                    <?php endif; ?>
+
+                </ul>
+
+                <!-- Área de usuario logueado -->
+                <?php if (!Application::isGuest()): ?>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/logout">Welcome <?php echo Application::$app->user->getDisplayName() ?>
-
-                             (Logout)
-                            </a>
+                            <a class="nav-link text-white" href="/logout">Bienvenido <?php echo Application::$app->user->getDisplayName() ?> (Logout)</a>
                         </li>
                     </ul>
                 <?php endif; ?>
@@ -119,3 +113,5 @@ use app\core\Application;
     </div>
 
 </body>
+
+</html>
