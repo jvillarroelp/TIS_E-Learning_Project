@@ -12,11 +12,8 @@
                 <button type="submit" class="btn btn-primary">Inscribirse</button>
             </form>
 
-
-
             <!-- Contenido principal -->
             <section>
-
                 <div class="titulo pb-3">
                     <h5>Descripción general</h5>
                 </div>
@@ -32,15 +29,24 @@
                         <!-- Item del módulo -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="heading<?= $modulo->ID_MODULO ?>">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $modulo->ID_MODULO ?>" aria-expanded="true" aria-controls="collapse<?= $modulo->ID_MODULO ?>">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $modulo->ID_MODULO ?>" aria-expanded="false" aria-controls="collapse<?= $modulo->ID_MODULO ?>">
                                     Módulo: <?= htmlspecialchars($modulo->NOMBRE_MODULO) ?>
                                 </button>
                             </h2>
-                            <div id="collapse<?= $modulo->ID_MODULO ?>" class="accordion-collapse collapse show" aria-labelledby="heading<?= $modulo->ID_MODULO ?>" data-bs-parent="#accordionExample">
+                            <div id="collapse<?= $modulo->ID_MODULO ?>" class="accordion-collapse collapse" aria-labelledby="heading<?= $modulo->ID_MODULO ?>" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <ul>
-                                        <!-- Aquí puedes agregar detalles específicos del módulo si es necesario -->
-                                        <li>Contenido del módulo</li>
+                                        <!-- Mostrar las lecciones del módulo actual -->
+                                        <?php 
+                                        $leccionesModulo = array_filter($lecciones, fn($leccion) => $leccion->ID_MODULO == $modulo->ID_MODULO);
+                                        if (!empty($leccionesModulo)): 
+                                        ?>
+                                            <?php foreach ($leccionesModulo as $leccion): ?>
+                                                <li><?= htmlspecialchars($leccion->NOMBRE_LECCION) ?></li>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <li>No hay lecciones disponibles para este módulo.</li>
+                                        <?php endif; ?>
                                     </ul>
                                 </div>
                             </div>
