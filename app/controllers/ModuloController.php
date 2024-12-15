@@ -6,34 +6,49 @@ use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
 use app\models\Modulo;
+use app\models\User;
 
 class ModuloController extends Controller
 {
-
-
     public function index(Request $request, Response $response)
     {
-        // Usar el método estático findAllRecords de Roles para obtener todos los roles
-        $modulos = Modulo::findAllRecords();  // Recuperar todos los roles
-        $modulos = Modulo::findAllRecords(); 
+        // Verificar si el usuario está autenticado
+        if (!isset($_SESSION['user_id'])) {
+            Application::$app->response->redirect('/login');
+            return;
+        }
 
-       
+        // Obtener el rol del usuario desde la sesión
+        $user = User::findOne(['ID' => $_SESSION['user_id']]);
+        if ($user && $user->ID_ROL !== 2) { // Verificar que el rol sea de docente (suponiendo que 2 es docente)
+            Application::$app->response->redirect('/');
+            return;
+        }
 
-        // Verificación: Muestra los roles obtenidos para depuración
+        // Recuperar todos los módulos si es docente
+        $modulos = Modulo::findAllRecords();
 
-        // Renderizar la vista 'roles-list' y pasar los roles obtenidos
+        // Renderizar la vista 'listModulos' y pasar los módulos obtenidos
         return $this->render('listModulos', [
             'modulos' => $modulos,
         ]);
     }
 
-
-
-
-
-
     public function create(Request $request, Response $response)
     {
+        // Verificar si el usuario está autenticado
+        if (!isset($_SESSION['user_id'])) {
+            Application::$app->response->redirect('/login');
+            return;
+        }
+
+        // Obtener el rol del usuario desde la sesión
+        $user = User::findOne(['ID' => $_SESSION['user_id']]);
+        if ($user && $user->ID_ROL !== 2) { // Verificar que el rol sea de docente
+            Application::$app->response->redirect('/');
+            return;
+        }
+
         $modulos = new Modulo();  // Crear una nueva instancia del modelo Modulo
 
         // Verificar si hay un 'COD_CURSO' en la URL
@@ -57,7 +72,6 @@ class ModuloController extends Controller
             'model' => $modulos,  // Pasamos el modelo para que esté disponible en la vista
         ]);
     }
-
 
     public function delete(Request $request, Response $response)
     {

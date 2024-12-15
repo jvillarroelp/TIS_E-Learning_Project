@@ -7,39 +7,55 @@ use app\core\Request;
 use app\core\Response;
 use app\models\Leccion;
 use app\core\Application;
+use app\models\User;
 
 class LeccionController extends Controller
 {
-
-
     public function index(Request $request, Response $response)
     {
-        // Usar el método estático findAllRecords de Roles para obtener todos los roles
-        $lecciones = Leccion::findAllRecords();  // Recuperar todos los roles
-        $lecciones = Leccion::findAllRecords(); 
+        // Verificar si el usuario está autenticado
+        if (!isset($_SESSION['user_id'])) {
+            Application::$app->response->redirect('/login');
+            return;
+        }
 
-       
+        // Obtener el rol del usuario desde la sesión
+        $user = User::findOne(['ID' => $_SESSION['user_id']]);
+        if ($user && $user->ID_ROL !== 2) { // Verificar que el rol sea de docente (suponiendo que 2 es docente)
+            Application::$app->response->redirect('/');
+            return;
+        }
 
-        // Verificación: Muestra los roles obtenidos para depuración
+        // Recuperar todas las lecciones si es docente
+        $lecciones = Leccion::findAllRecords();  // Recuperar todas las lecciones
 
-        // Renderizar la vista 'roles-list' y pasar los roles obtenidos
+        // Renderizar la vista 'listLecciones' y pasar las lecciones obtenidas
         return $this->render('listLecciones', [
             'lecciones' => $lecciones,
         ]);
     }
 
-
-
-
-
     public function create(Request $request, Response $response)
     {
-        $lecciones = new Leccion();  // Crear una nueva instancia del modelo Modulo
+        // Verificar si el usuario está autenticado
+        if (!isset($_SESSION['user_id'])) {
+            Application::$app->response->redirect('/login');
+            return;
+        }
 
-        // Verificar si hay un 'COD_CURSO' en la URL
+        // Obtener el rol del usuario desde la sesión
+        $user = User::findOne(['ID' => $_SESSION['user_id']]);
+        if ($user && $user->ID_ROL !== 2) { // Verificar que el rol sea de docente
+            Application::$app->response->redirect('/');
+            return;
+        }
+
+        $lecciones = new Leccion();  // Crear una nueva instancia del modelo Leccion
+
+        // Verificar si hay un 'ID_MODULO' en la URL
         $id_modulo = $request->getQueryParam('ID_MODULO');
         if ($id_modulo) {
-            // Si existe, asignamos el COD_CURSO al modelo
+            // Si existe, asignamos el ID_MODULO al modelo
             $lecciones->ID_MODULO = $id_modulo;
         }
 
@@ -48,7 +64,7 @@ class LeccionController extends Controller
 
             // Validar y guardar los datos
             if ($lecciones->validate() && $lecciones->save()) {
-                Application::$app->session->setFlash('success', 'Módulo guardado correctamente');
+                Application::$app->session->setFlash('success', 'Lección guardada correctamente');
                 return $response->redirect('/listLecciones');
             }
         }
@@ -57,7 +73,6 @@ class LeccionController extends Controller
             'model' => $lecciones,  // Pasamos el modelo para que esté disponible en la vista
         ]);
     }
-
     
     public function delete(Request $request, Response $response)
     {

@@ -6,15 +6,26 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
-use app\models\Modulo;
-use app\models\Contenido;
 use app\models\Recurso;
+use app\models\User;
 
 class RecursosController extends Controller
 {
-
     public function create(Request $request, Response $response)
     {
+        // Verificar si el usuario está autenticado
+        if (!isset($_SESSION['user_id'])) {
+            Application::$app->response->redirect('/login');
+            return;
+        }
+
+        // Obtener el rol del usuario desde la sesión
+        $user = User::findOne(['ID' => $_SESSION['user_id']]);
+        if ($user && $user->ID_ROL !== 2) { // Verificar que el rol sea de docente (suponiendo que 2 es docente)
+            Application::$app->response->redirect('/');
+            return;
+        }
+
         $recursos = new Recurso();  // Crear una nueva instancia del modelo Recurso
 
         // Verificar si hay un 'ID_LECCION' en la URL
@@ -39,20 +50,27 @@ class RecursosController extends Controller
         ]);
     }
 
-
     public function index(Request $request, Response $response)
     {
-        // Usar el método estático findAllRecords de Roles para obtener todos los roles
+        // Verificar si el usuario está autenticado
+        if (!isset($_SESSION['user_id'])) {
+            Application::$app->response->redirect('/login');
+            return;
+        }
+
+        // Obtener el rol del usuario desde la sesión
+        $user = User::findOne(['ID' => $_SESSION['user_id']]);
+        if ($user && $user->ID_ROL !== 2) { // Verificar que el rol sea de docente
+            Application::$app->response->redirect('/');
+            return;
+        }
+
+        // Obtener todos los recursos si el usuario es docente
         $recursos = Recurso::findAllRecords();
 
-
-
-        // Verificación: Muestra los roles obtenidos para depuración
-
-        // Renderizar la vista 'roles-list' y pasar los roles obtenidos
+        // Renderizar la vista 'listRecursos' y pasar los recursos obtenidos
         return $this->render('listRecursos', [
             'recursos' => $recursos,
-
         ]);
     }
 }
