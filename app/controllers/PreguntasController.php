@@ -10,6 +10,7 @@ use app\core\Router;
 use app\core\Response;
 use app\models\Docente;
 use app\models\User;
+use app\models\Estudiante;
 
 class PreguntasController extends Controller
 {
@@ -23,9 +24,9 @@ class PreguntasController extends Controller
     
         // Obtener el rol del usuario desde la sesión
         $user = User::findOne(['ID' => $_SESSION['user_id']]);
-        if ($user && $user->ID_ROL !== 2) { // Verificar que el rol sea de docente (suponiendo que 2 es docente)
-            Application::$app->response->redirect('/');
-            return;
+        if ($user && !in_array($user->ID_ROL, [2, 3])) { // Verificar que el rol sea 2 (docente) o 3
+            Application::$app->session->setFlash('error', 'No tienes permiso para acceder a esta página.');
+            return Application::$app->response->redirect('/');
         }
     
         // Obtener el ID del docente desde la sesión
@@ -70,6 +71,26 @@ class PreguntasController extends Controller
             'model' => $pregunta,  // Pasamos el modelo a la vista
         ]);
     }
+
+    public function index(Request $request, Response $response)
+    {
+        // Usar el método estático findAllRecords de Roles para obtener todos los roles
+        $preguntas = Pregunta::findAllRecords();  
+
+       
+
+        // Verificación: Muestra los roles obtenidos para depuración
+
+        // Renderizar la vista 'roles-list' y pasar los roles obtenidos
+        return $this->render('listPreguntas', [
+            'preguntas' => $preguntas,
+           
+        ]);
+    }
+
+
+
+    
 
 
     

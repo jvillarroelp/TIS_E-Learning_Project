@@ -21,6 +21,7 @@ use app\controllers\EstudianteController;
 use app\controllers\DocenteController;
 use app\controllers\PreguntasController;
 use app\models\Pregunta;
+use app\controllers\RespuestaController;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -124,6 +125,9 @@ $app->router->get('/preguntas', [PreguntasController::class, 'create']);
 $app->router->post('/preguntas', [PreguntasController::class, 'create']);
 
 $app->router->get('/listPreguntas', [PreguntasController::class, 'index']);
+
+$app->router->get('/respuestas', [RespuestaController::class, 'create']);
+$app->router->post('/respuestas', [RespuestaController::class, 'create']);
 
 
 $app->run();

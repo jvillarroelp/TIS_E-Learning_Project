@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     14-12-2024 13:23:31                          */
+/* Created on:     14-12-2024 23:49:46                          */
 /*==============================================================*/
 
 
@@ -176,6 +176,7 @@ create table PAGO
 create table PERMISOS
 (
    ID_PERMISO           INT NOT NULL AUTO_INCREMENT,
+
    NOMBRE_PERMISO       varchar(255),
    primary key (ID_PERMISO)
 );
@@ -239,7 +240,6 @@ create table RESPUESTA_EVALUACION
    ID_RESPUESTA         INT NOT NULL AUTO_INCREMENT,
 
    ID_PREGUNTA          int not null,
-   COD_EVALUACION       int not null,
    ID                   int not null,
    FECHA_RESPUESTA      date,
    RESPUESTA            text,
@@ -251,7 +251,7 @@ create table RESPUESTA_EVALUACION
 /*==============================================================*/
 create table ROLES
 (
-   ID_ROL              INT NOT NULL AUTO_INCREMENT,
+   ID_ROL               INT NOT NULL AUTO_INCREMENT,
 
    NOMBRE_ROL           varchar(255),
    primary key (ID_ROL)
@@ -276,12 +276,12 @@ create table USUARIO
 
    ID_ROL               int not null,
    RUT_USUARIO          int,
-   NOMBRE_PERMISO       varchar(255),
    APELLIDO             varchar(255),
    CORREO               varchar(30),
    CONTRASENIA          char(255),
    REGION               varchar(20),
    COMUNA               varchar(20),
+   NOMBRE               varchar(255),
    primary key (ID)
 );
 
@@ -350,9 +350,6 @@ alter table REALIZA add constraint FK_REALIZA2 foreign key (ID)
 
 alter table RECURSOS add constraint FK_RELATIONSHIP_13 foreign key (ID_LECCION)
       references LECCION (ID_LECCION) on delete restrict on update restrict;
-
-alter table RESPUESTA_EVALUACION add constraint FK_DISPONE foreign key (COD_EVALUACION)
-      references EVALUACION (COD_EVALUACION) on delete restrict on update restrict;
 
 alter table RESPUESTA_EVALUACION add constraint FK_POSEE foreign key (ID_PREGUNTA)
       references PREGUNTAS_EVALUACION (ID_PREGUNTA) on delete restrict on update restrict;

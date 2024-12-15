@@ -1,7 +1,7 @@
 <h3 >Lista de Preguntas</h3>
 <a href="#" class="btn btn-success mt-3 mb-3">Creal rol</a>
 
-<?php if (count($roles) > 0): ?>
+<?php if (count($preguntas) > 0): ?>
     <table class="table table-bordered ">
         <thead >
             <tr>
@@ -12,32 +12,18 @@
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($roles as $rol): ?>
+        <?php foreach ($preguntas as $pregunta): ?>
             <tr>
-                <td><?= $rol->ID_ROL ?></td>
-                <td><?= $rol->NOMBRE_ROL ?></td>
+                <td><?= $pregunta->ID_PREGUNTA ?></td>
+                <td><?= $pregunta->PREGUNTA ?></td>
+                <td><?= $pregunta->TIPO_PREGUNTA ?></td>
                 <td>
-                    <!-- Formulario para eliminar un rol -->
-                    <form action="/deleteRol" method="post" style="display:inline;">
-                    <input type="hidden" name="ID_ROL" value="<?= $rol->ID_ROL ?>"/>
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
+                    <a href="/respuestas?ID_PREGUNTA=<?= $pregunta->ID_PREGUNTA?>" class="btn btn-primary">
+                        Crear Respuesta
+                    </a>
                 </td>
 
-                <td>
-                    <!-- Formulario para asignar un permiso a este rol -->
-                    <form action="/rolPermiso/assignPermission" method="POST">
-                        <!-- Selecciona un permiso -->
-                        <select name="ID_PERMISO">
-                            <?php foreach ($permisos as $permiso): ?>
-                                <option value="<?= $permiso->ID_PERMISO ?>"><?= $permiso->NOMBRE_PERMISO ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <!-- Pasar el ID del rol -->
-                        <input type="hidden" name="ID_ROL" value="<?= $rol->ID_ROL ?>">
-                        <button type="submit">Asignar Permiso</button>
-                    </form>
-                </td>
+
             </tr>
         <?php endforeach; ?>
         </tbody>
